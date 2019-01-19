@@ -6,7 +6,9 @@ export default class App extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
-				<View style={styles.slideOne}></View>
+				<View style={styles.slideOne}>
+					<Text>Merhaba!</Text>
+				</View>
 				<View style={styles.slideTwo}>
 					<View style={[styles.box, styles.box1]}></View>
 					<View style={[styles.box, styles.box2]}></View>
@@ -18,7 +20,17 @@ export default class App extends Component<Props> {
 }
 
 // eğer flex-direction row verilirse birincil eksen yatay olur.
-// eğer flex-direction columnt verilirse birincil eksen dikey olur.
+// eğer flex-direction column verilirse birincil eksen dikey olur.
+
+/*
+*
+* justifyContent: Birincil eksende elemanların nasıl konumlanacağını
+* ---------------	belirler.
+*
+* alignItems: İkincil eksende elemanların nasıl konumlanacağını belirler.
+* -----------
+*
+* */
 
 const styles = StyleSheet.create({
 	container: {
@@ -27,12 +39,17 @@ const styles = StyleSheet.create({
   },
 	slideOne: {
 		backgroundColor: '#607D8B',
-		flex: 1
+		flex: 1,
+		flexDirection: 'column',
+		justifyContent: 'center',
+		alignItems: 'center'
 	},
 	slideTwo: {
 		backgroundColor: '#FF5722',
 		flex: 2,
-		flexDirection: 'row'
+		flexDirection: 'row', // yatay
+		justifyContent: 'center',
+		alignItems: 'center'
 	},
 	box: {
 		width: 100,
