@@ -38,6 +38,10 @@ export default class App extends Component<Props> {
 * alignItems: İkincil eksende elemanların nasıl konumlanacağını belirler.
 * -----------
 *
+* 	- flex-start
+* 	- flex-end
+*   - stretch
+*
 * */
 
 const styles = StyleSheet.create({
@@ -55,13 +59,12 @@ const styles = StyleSheet.create({
 	slideTwo: {
 		backgroundColor: '#FF5722',
 		flex: 2,
-		flexDirection: 'row',
+		flexDirection: 'column',
 		justifyContent: 'space-between',
-		alignItems: 'center'
+		alignItems: 'stretch'
 	},
 	box: {
-		width: 60,
-		height: 60
+		height: 140,
 	},
 	box1: {
 		backgroundColor:'#795548'
