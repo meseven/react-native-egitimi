@@ -1,49 +1,37 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
-
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
 
 type Props = {};
 export default class App extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Hello React Native!</Text>
-        <Text style={styles.instructions}>Selam!</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
+        <View style={[styles.box, styles.box1]}>
+          <Text>Box 1</Text>
+        </View>
+				<View style={[styles.box, styles.box2]}>
+					<Text>Box 2</Text>
+				</View>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+	container: {
+    paddingTop: 33
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  box: {
+		width: 100,
+		height: 100,
+    borderWidth: 5,
+    borderColor: '#ddd',
+    marginBottom: 5
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  box1: {
+    backgroundColor: 'aquamarine',
   },
+  box2: {
+    backgroundColor: 'purple',
+  }
 });
