@@ -13,6 +13,7 @@ export default class App extends Component<Props> {
 					<View style={[styles.box, styles.box1]}></View>
 					<View style={[styles.box, styles.box2]}></View>
 					<View style={[styles.box, styles.box3]}></View>
+					<View style={[styles.box, styles.box2]}></View>
 				</View>
       </View>
     );
@@ -26,6 +27,13 @@ export default class App extends Component<Props> {
 *
 * justifyContent: Birincil eksende elemanların nasıl konumlanacağını
 * ---------------	belirler.
+*
+* 	- flex-start
+* 	- flex-end
+* 	- center
+* 	- space-between
+* 	- space-around
+*
 *
 * alignItems: İkincil eksende elemanların nasıl konumlanacağını belirler.
 * -----------
@@ -41,19 +49,19 @@ const styles = StyleSheet.create({
 		backgroundColor: '#607D8B',
 		flex: 1,
 		flexDirection: 'column',
-		justifyContent: 'center',
+		justifyContent: 'flex-end',
 		alignItems: 'center'
 	},
 	slideTwo: {
 		backgroundColor: '#FF5722',
 		flex: 2,
-		flexDirection: 'row', // yatay
-		justifyContent: 'center',
+		flexDirection: 'row',
+		justifyContent: 'space-between',
 		alignItems: 'center'
 	},
 	box: {
-		width: 100,
-		height: 100
+		width: 60,
+		height: 60
 	},
 	box1: {
 		backgroundColor:'#795548'
