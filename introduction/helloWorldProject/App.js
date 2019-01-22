@@ -1,14 +1,19 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import Card from './src/components/Card';
+import {StyleSheet, View, Button} from 'react-native';
 
 export default class App extends Component {
+	onPressDetail = () => {
+		alert('Detail');
+	};
+
 	render() {
 		return (
 			<View style={styles.container}>
-				<Card text='Merhaba' backgroundColor='blue'  />
-				<Card text='🚀'/>
-				<Card text='React Native' backgroundColor='red' />
+				<Button
+					title='Detail'
+					color='#000'
+					onPress={this.onPressDetail}
+				/>
 			</View>
 		);
 	}
