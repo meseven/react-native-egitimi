@@ -6,9 +6,9 @@ export default class App extends Component {
 	render() {
 		return (
 			<View style={styles.container}>
-				<Card />
-				<Card />
-				<Card />
+				<Card text='Merhaba' backgroundColor='blue'  />
+				<Card text='🚀'/>
+				<Card text='React Native' backgroundColor='red' />
 			</View>
 		);
 	}
