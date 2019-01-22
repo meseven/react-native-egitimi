@@ -1,18 +1,27 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Button} from 'react-native';
+import {StyleSheet, View, Button, Text} from 'react-native';
 
 export default class App extends Component {
-	onPressDetail = () => {
-		alert('Detail');
+	state = {
+		name: 'Mehmet'
+	};
+
+	onPressChangeName = () => {
+		this.setState({
+			name: 'Ahmet',
+		});
 	};
 
 	render() {
 		return (
 			<View style={styles.container}>
+				<View>
+					<Text>{this.state.name}</Text>
+				</View>
 				<Button
-					title='Detail'
+					title='Change the Name'
 					color='#000'
-					onPress={this.onPressDetail}
+					onPress={this.onPressChangeName}
 				/>
 			</View>
 		);
@@ -23,7 +32,7 @@ const styles = StyleSheet.create({
 	container: {
 		backgroundColor: '#FFEB3B',
 		flex: 1,
-		flexDirection: 'row',
+		flexDirection: 'column',
 		justifyContent: 'center',
 		alignItems: 'center'
 	}
