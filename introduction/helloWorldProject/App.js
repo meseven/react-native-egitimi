@@ -3,12 +3,18 @@ import {StyleSheet, View, Button, Text} from 'react-native';
 
 export default class App extends Component {
 	state = {
-		name: 'Mehmet'
+		number: 0
 	};
 
-	onPressChangeName = () => {
+	onPressIncrease = () => {
 		this.setState({
-			name: 'Ahmet',
+			number: ++this.state.number,
+		});
+	};
+
+	onPressDecrease = () => {
+		this.setState({
+			number: --this.state.number,
 		});
 	};
 
@@ -16,13 +22,20 @@ export default class App extends Component {
 		return (
 			<View style={styles.container}>
 				<View>
-					<Text>{this.state.name}</Text>
+					<Text style={styles.number}>{this.state.number}</Text>
 				</View>
-				<Button
-					title='Change the Name'
-					color='#000'
-					onPress={this.onPressChangeName}
-				/>
+				<View style={styles.buttons}>
+					<Button
+						title='Azalt'
+						color='#000'
+						onPress={this.onPressDecrease}
+					/>
+					<Button
+						title='Arttır'
+						color='#000'
+						onPress={this.onPressIncrease}
+					/>
+				</View>
 			</View>
 		);
 	}
@@ -35,5 +48,11 @@ const styles = StyleSheet.create({
 		flexDirection: 'column',
 		justifyContent: 'center',
 		alignItems: 'center'
+	},
+	buttons: {
+		flexDirection: 'row'
+	},
+	number: {
+		fontSize: 44
 	}
 });
