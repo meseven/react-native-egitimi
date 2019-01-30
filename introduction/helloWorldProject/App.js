@@ -8,6 +8,7 @@ export default class App extends Component {
 		return (
 			<View style={styles.container}>
 				<ScrollView
+					pagingEnabled={true}
 					horizontal={true}
 				>
 					<Text style={styles.title}>1</Text>
