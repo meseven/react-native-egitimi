@@ -1,27 +1,27 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, Image, ScrollView, Dimensions} from 'react-native';
-
-const { width } = Dimensions.get('window');
+import { StyleSheet, View, Image, Text, Button, TouchableOpacity } from 'react-native';
 
 export default class App extends Component {
+	_onPressButton = () => {
+		alert('test');
+	};
+
 	render() {
 		return (
 			<View style={styles.container}>
-				<ScrollView
-					pagingEnabled={true}
-					horizontal={true}
+				<TouchableOpacity style={{marginBottom: 40}}>
+					<View style={styles.buttonContainer}>
+						<Text style={styles.buttonTitle}>My Button</Text>
+					</View>
+				</TouchableOpacity>
+
+				<TouchableOpacity
+					onPress={this._onPressButton}
 				>
-					<Text style={styles.title}>1</Text>
-					<Text style={styles.title}>2</Text>
-					<Text style={styles.title}>3</Text>
-					<Text style={styles.title}>4</Text>
-					<Text style={styles.title}>5</Text>
-					<Text style={styles.title}>6</Text>
-					<Text style={styles.title}>7</Text>
-					<Text style={styles.title}>8</Text>
-					<Text style={styles.title}>9</Text>
-					<Text style={styles.title}>10</Text>
-				</ScrollView>
+					<Image
+						style={{width: 100, height: 100}}
+						source={require('./src/assets/button.png')} />
+				</TouchableOpacity>
 			</View>
 		);
 	}
@@ -31,16 +31,16 @@ const styles = StyleSheet.create({
 	container: {
 		backgroundColor: '#FFEB3B',
 		flex: 1,
-		flexDirection: 'row',
+		flexDirection: 'column',
+		justifyContent: 'center',
+		alignItems: 'center'
 	},
-	title: {
+	buttonTitle: {
+		fontSize: 24
+	},
+	buttonContainer: {
+		padding: 15,
 		backgroundColor: 'orange',
-		marginVertical: 30,
-		textAlign: 'center',
-		paddingVertical: 60,
-		borderColor: 'yellow',
-		borderWidth: 2,
-		fontSize: 36,
-		width
+		borderRadius: 15
 	}
 });
