@@ -1,15 +1,16 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, Image, ScrollView} from 'react-native';
+import {StyleSheet, Text, View, Image, ScrollView, Dimensions} from 'react-native';
+
+const { width } = Dimensions.get('window');
 
 export default class App extends Component {
 	render() {
 		return (
 			<View style={styles.container}>
-				<ScrollView>
+				<ScrollView
+					horizontal={true}
+				>
 					<Text style={styles.title}>1</Text>
-					<View>
-						<Text>hi!</Text>
-					</View>
 					<Text style={styles.title}>2</Text>
 					<Text style={styles.title}>3</Text>
 					<Text style={styles.title}>4</Text>
@@ -35,6 +36,10 @@ const styles = StyleSheet.create({
 		backgroundColor: 'orange',
 		marginVertical: 30,
 		textAlign: 'center',
-		paddingVertical: 60
+		paddingVertical: 60,
+		borderColor: 'yellow',
+		borderWidth: 2,
+		fontSize: 36,
+		width
 	}
 });
