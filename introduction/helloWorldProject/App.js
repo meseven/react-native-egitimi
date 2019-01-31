@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
-import { StyleSheet, View, Text, SafeAreaView, FlatList, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, SafeAreaView, FlatList, Image, TouchableOpacity, TextInput } from 'react-native';
 
 import data from './data';
 
 export default class App extends Component {
 	renderContactsItem = ({ item, index }) => {
 		return(
-			<TouchableOpacity style={styles.itemContainer}>
+			<TouchableOpacity style={[styles.itemContainer, { backgroundColor: index % 2 === 1 ? '#fafafa' : '' }]}>
 				<Image
 					style={styles.avatar}
 					source={{ uri: item.picture }} />
@@ -18,10 +18,19 @@ export default class App extends Component {
 		)
 	};
 
+	renderHeader = () => {
+		return (
+			<View style={styles.searchContainer}>
+				<TextInput placeholder="Search..." style={styles.searchInput} />
+			</View>
+		)
+	};
+
 	render() {
 		return (
 			<SafeAreaView style={styles.container}>
 				<FlatList
+					ListHeaderComponent={this.renderHeader}
 					renderItem={this.renderContactsItem}
 					keyExtractor={item => item._id}
 					data={data} />
@@ -54,5 +63,13 @@ const styles = StyleSheet.create({
 	},
 	name: {
 		fontSize: 16
+	},
+	searchContainer: {
+		padding: 10
+	},
+	searchInput: {
+		fontSize: 16,
+		backgroundColor: '#f9f9f9',
+		padding: 10
 	}
 });
