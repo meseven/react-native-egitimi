@@ -1,27 +1,30 @@
 import React, {Component} from 'react';
-import { StyleSheet, View, Image, Text, Button, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, TextInput } from 'react-native';
 
 export default class App extends Component {
-	_onPressButton = () => {
-		alert('test');
+	state = {
+		name: ''
+	};
+
+	_onChangeText = text => {
+		this.setState({
+			name: text,
+		});
 	};
 
 	render() {
+		const {name} = this.state;
+
 		return (
 			<View style={styles.container}>
-				<TouchableOpacity style={{marginBottom: 40}}>
-					<View style={styles.buttonContainer}>
-						<Text style={styles.buttonTitle}>My Button</Text>
-					</View>
-				</TouchableOpacity>
-
-				<TouchableOpacity
-					onPress={this._onPressButton}
-				>
-					<Image
-						style={{width: 100, height: 100}}
-						source={require('./src/assets/button.png')} />
-				</TouchableOpacity>
+				<Text>{name}</Text>
+				<TextInput
+					autoCapitalize='none'
+					keyboardType='numeric'
+					value={name}
+					placeholder='Bir isim girin...'
+					onChangeText={this._onChangeText}
+					style={styles.myInput} />
 			</View>
 		);
 	}
@@ -33,14 +36,13 @@ const styles = StyleSheet.create({
 		flex: 1,
 		flexDirection: 'column',
 		justifyContent: 'center',
-		alignItems: 'center'
+		alignItems: 'center',
+		paddingHorizontal: 10
 	},
-	buttonTitle: {
-		fontSize: 24
-	},
-	buttonContainer: {
-		padding: 15,
-		backgroundColor: 'orange',
-		borderRadius: 15
+	myInput: {
+		width: '100%',
+		height: 60,
+		borderWidth: 2,
+		borderColor: 'gray'
 	}
 });
