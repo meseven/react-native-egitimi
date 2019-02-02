@@ -4,6 +4,11 @@ import {StyleSheet, View, Text, SafeAreaView, FlatList, Image, TouchableOpacity,
 import data from '../../data';
 
 export default class FlatListExample extends Component {
+	state = {
+		text: '',
+		contacts: data
+	};
+
 	renderContactsItem = ({item, index}) => {
 		return (
 			<TouchableOpacity style={[styles.itemContainer, {backgroundColor: index % 2 === 1 ? '#fafafa' : ''}]}>
@@ -18,10 +23,33 @@ export default class FlatListExample extends Component {
 		)
 	};
 
+	searchFilter = text => {
+		const newData = data.filter(item => {
+			const listItem = `${item.name.toLowerCase()} ${item.company.toLowerCase()}`;
+
+			return listItem.indexOf(text.toLowerCase()) > -1;
+		});
+
+		this.setState({
+			contacts: newData,
+		});
+	};
+
 	renderHeader = () => {
+		const {text} = this.state;
 		return (
 			<View style={styles.searchContainer}>
-				<TextInput placeholder="Search..." style={styles.searchInput}/>
+				<TextInput
+					onChangeText={text => {
+						this.setState({
+							text,
+						});
+
+						this.searchFilter(text);
+					}}
+					value={text}
+					placeholder="Search..."
+					style={styles.searchInput}/>
 			</View>
 		)
 	};
@@ -29,10 +57,10 @@ export default class FlatListExample extends Component {
 	render() {
 		return (
 			<FlatList
-				ListHeaderComponent={this.renderHeader}
+				ListHeaderComponent={this.renderHeader()}
 				renderItem={this.renderContactsItem}
 				keyExtractor={item => item._id}
-				data={data}/>
+				data={this.state.contacts}/>
 		);
 	}
 }
