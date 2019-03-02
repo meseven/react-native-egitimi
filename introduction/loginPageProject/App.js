@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, ScrollView} from 'react-native';
 
 export default class App extends Component {
   render() {
@@ -10,6 +10,16 @@ export default class App extends Component {
 					<Text style={styles.logo}>UDAC</Text>
 					<Text style={styles.logoDescription}>Property & Tax Survey</Text>
 				</View>
+				<ScrollView>
+					<View style={styles.loginArea}>
+						<Text>Test</Text>
+						<Text>Test</Text>
+						<Text>Test</Text>
+						<Text>Test</Text>
+						<Text>Test</Text>
+						<Text>Test</Text>
+					</View>
+				</ScrollView>
       </View>
     );
   }
@@ -38,5 +48,20 @@ const styles = StyleSheet.create({
 	logoDescription: {
   	textAlign: 'center',
 		color: '#f2f2f2'
+	},
+	loginArea: {
+  	marginHorizontal: 40,
+		marginVertical: 40,
+		backgroundColor: '#fff',
+		padding: 20,
+		borderRadius: 5,
+
+		shadowColor: 'black',
+		shadowOpacity: .2,
+		shadowRadius: 3,
+		shadowOffset: {
+  		width:0,
+			height: 2
+		}
 	}
 });
