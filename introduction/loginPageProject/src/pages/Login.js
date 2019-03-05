@@ -12,10 +12,12 @@ export default class Login extends Component {
 				</View>
 				<ScrollView>
 					<View style={styles.loginArea}>
-						<Text style={styles.loginAreaTitle}>Property Tax Server</Text>
-						<Text style={styles.loginAreaDescription}>
-							Unique Door No Easily Fill Your Entire Property Tax Using App
-						</Text>
+						<Text>test</Text>
+						<Text>test</Text>
+						<Text>test</Text>
+						<Text>test</Text>
+						<Text>test</Text>
+						<Text>test</Text>
 					</View>
 				</ScrollView>
 			</View>
@@ -60,7 +62,8 @@ const styles = StyleSheet.create({
 		shadowOffset: {
 			width:0,
 			height: 2
-		}
+		},
+		elevation: 4
 	},
 	loginAreaTitle: {
 		fontSize: 20,
