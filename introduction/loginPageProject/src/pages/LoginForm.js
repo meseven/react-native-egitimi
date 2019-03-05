@@ -10,12 +10,18 @@ export default class LoginForm extends Component {
 				<Text style={styles.signInText}>Sign In</Text>
 
 				<Input
+					returnKeyType={"next"}
 					autoCapitalize="none"
-					placeholder="Username"/>
+					placeholder="Username"
+					onSubmitEditing={() => this.passwordInput.focus()}
+				/>
 
 				<Input
+					returnKeyType={"go"}
 					secureTextEntry={true}
-					placeholder="Password"/>
+					placeholder="Password"
+					inputRef={input => this.passwordInput = input}
+				/>
 			</View>
     );
   }

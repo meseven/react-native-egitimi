@@ -14,6 +14,7 @@ export default class Input extends Component {
 					placeholderTextColor="#ddd"
 					style={styles.input}
 					value={this.state.text}
+					ref={this.props.inputRef}
 					onChangeText={text => this.setState({text})}
 				/>
 			</View>
