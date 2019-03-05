@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, ScrollView} from 'react-native';
+import LoginForm from './LoginForm';
 
 export default class Login extends Component {
 	render() {
@@ -16,6 +17,8 @@ export default class Login extends Component {
 						<Text style={styles.loginAreaDescription}>
 							Unique Door No Easily Fill Your Entire Property Tax Using App
 						</Text>
+
+						<LoginForm />
 					</View>
 				</ScrollView>
 			</View>
