@@ -12,12 +12,10 @@ export default class Login extends Component {
 				</View>
 				<ScrollView>
 					<View style={styles.loginArea}>
-						<Text>test</Text>
-						<Text>test</Text>
-						<Text>test</Text>
-						<Text>test</Text>
-						<Text>test</Text>
-						<Text>test</Text>
+						<Text style={styles.loginAreaTitle}>Property Tax Server</Text>
+						<Text style={styles.loginAreaDescription}>
+							Unique Door No Easily Fill Your Entire Property Tax Using App
+						</Text>
 					</View>
 				</ScrollView>
 			</View>
