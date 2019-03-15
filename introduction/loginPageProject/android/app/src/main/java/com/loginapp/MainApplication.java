@@ -1,4 +1,4 @@
-package com.loginpageproject;
+package com.loginapp;
 
 import android.app.Application;
 
