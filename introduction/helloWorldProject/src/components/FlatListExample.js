@@ -6,6 +6,7 @@ export default class FlatListExample extends Component {
 	state = {
 		text: '',
 		contacts: [],
+		allContacts: [],
 		loading: true
 	};
 
@@ -17,6 +18,7 @@ export default class FlatListExample extends Component {
 		const { data: { results: contacts } } = await axios.get('https://randomuser.me/api/?results=30');
 		this.setState({
 			contacts,
+			allContacts: contacts,
 			loading: false
 		});
 	};
@@ -36,8 +38,8 @@ export default class FlatListExample extends Component {
 	};
 
 	searchFilter = text => {
-		const newData = data.filter(item => {
-			const listItem = `${item.name.toLowerCase()} ${item.company.toLowerCase()}`;
+		const newData = this.state.allContacts.filter(item => {
+			const listItem = `${item.name.first.toLowerCase()} ${item.name.last.toLowerCase()} ${item.location.state.toLowerCase()}`;
 
 			return listItem.indexOf(text.toLowerCase()) > -1;
 		});
