@@ -1,12 +1,23 @@
 import React, {Component} from 'react';
 import {StyleSheet, View, Text, FlatList, Image, TouchableOpacity, TextInput} from 'react-native';
-
-import data from '../../data';
+import axios from 'axios';
 
 export default class FlatListExample extends Component {
 	state = {
 		text: '',
-		contacts: data
+		contacts: []
+	};
+
+	componentDidMount() {
+		this.getContacts();
+	}
+
+	getContacts = async () => {
+		const { data: { results: contacts } } = await axios.get('https://randomuser.me/api/?results=30');
+		this.setState({
+			contacts,
+		});
+		console.log(contacts);
 	};
 
 	renderContactsItem = ({item, index}) => {
@@ -14,10 +25,10 @@ export default class FlatListExample extends Component {
 			<TouchableOpacity style={[styles.itemContainer, {backgroundColor: index % 2 === 1 ? '#fafafa' : ''}]}>
 				<Image
 					style={styles.avatar}
-					source={{uri: item.picture}}/>
+					source={{uri: item.picture.thumbnail}}/>
 				<View style={styles.textContainer}>
-					<Text style={styles.name}>{item.name}</Text>
-					<Text>{item.company}</Text>
+					<Text style={styles.name}>{item.name.first} {item.name.last}</Text>
+					<Text>{item.location.state}</Text>
 				</View>
 			</TouchableOpacity>
 		)
@@ -59,7 +70,7 @@ export default class FlatListExample extends Component {
 			<FlatList
 				ListHeaderComponent={this.renderHeader()}
 				renderItem={this.renderContactsItem}
-				keyExtractor={item => item._id}
+				keyExtractor={item => item.login.uuid}
 				data={this.state.contacts}/>
 		);
 	}
