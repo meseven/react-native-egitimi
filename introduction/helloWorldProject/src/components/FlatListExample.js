@@ -5,6 +5,7 @@ import axios from 'axios';
 export default class FlatListExample extends Component {
 	state = {
 		text: '',
+		page: 1,
 		contacts: [],
 		allContacts: [],
 		loading: true
@@ -15,12 +16,29 @@ export default class FlatListExample extends Component {
 	}
 
 	getContacts = async () => {
-		const { data: { results: contacts } } = await axios.get('https://randomuser.me/api/?results=30');
 		this.setState({
-			contacts,
-			allContacts: contacts,
+			loading: true,
+		});
+
+		const { data: { results: contacts } } = await axios.get(`https://randomuser.me/api/?results=10&page=${this.state.page}`);
+		const users = [...this.state.allContacts, ...contacts];
+
+		this.setState({
+			contacts: users,
+			allContacts: users,
 			loading: false
 		});
+	};
+
+	loadMore = () => {
+		if (!this.duringMomentum) {
+			this.setState({
+				page: this.state.page + 1,
+			}, () => {
+				this.getContacts();
+			});
+			this.duringMomentum = true;
+		}
 	};
 
 	renderContactsItem = ({item, index}) => {
@@ -71,7 +89,9 @@ export default class FlatListExample extends Component {
 	renderFooter = () => {
 		if (!this.state.loading) return null;
 		return(
-			<View>
+			<View style={{
+				paddingVertical: 20
+			}}>
 				<ActivityIndicator size="large" />
 			</View>
 		)
@@ -84,7 +104,12 @@ export default class FlatListExample extends Component {
 				ListHeaderComponent={this.renderHeader()}
 				renderItem={this.renderContactsItem}
 				keyExtractor={item => item.login.uuid}
-				data={this.state.contacts}/>
+				data={this.state.contacts}
+
+				onEndReached={this.loadMore}
+				onEndReachedThreshold={0}
+				onMomentumScrollBegin={() => { this.duringMomentum = false }}
+			/>
 		);
 	}
 }
