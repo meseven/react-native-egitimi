@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Text, FlatList, Image, TouchableOpacity, TextInput} from 'react-native';
+import {StyleSheet, View, Text, FlatList, Image, TouchableOpacity, TextInput, ActivityIndicator} from 'react-native';
 import axios from 'axios';
 
 export default class FlatListExample extends Component {
 	state = {
 		text: '',
-		contacts: []
+		contacts: [],
+		loading: true
 	};
 
 	componentDidMount() {
@@ -16,8 +17,8 @@ export default class FlatListExample extends Component {
 		const { data: { results: contacts } } = await axios.get('https://randomuser.me/api/?results=30');
 		this.setState({
 			contacts,
+			loading: false
 		});
-		console.log(contacts);
 	};
 
 	renderContactsItem = ({item, index}) => {
@@ -65,9 +66,19 @@ export default class FlatListExample extends Component {
 		)
 	};
 
+	renderFooter = () => {
+		if (!this.state.loading) return null;
+		return(
+			<View>
+				<ActivityIndicator size="large" />
+			</View>
+		)
+	};
+
 	render() {
 		return (
 			<FlatList
+				ListFooterComponent={this.renderFooter}
 				ListHeaderComponent={this.renderHeader()}
 				renderItem={this.renderContactsItem}
 				keyExtractor={item => item.login.uuid}
