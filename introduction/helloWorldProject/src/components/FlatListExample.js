@@ -8,7 +8,8 @@ export default class FlatListExample extends Component {
 		page: 1,
 		contacts: [],
 		allContacts: [],
-		loading: true
+		loading: true,
+		refreshing: false
 	};
 
 	componentDidMount() {
@@ -23,10 +24,15 @@ export default class FlatListExample extends Component {
 		const { data: { results: contacts } } = await axios.get(`https://randomuser.me/api/?results=10&page=${this.state.page}`);
 		const users = [...this.state.allContacts, ...contacts];
 
+		if (this.state.refreshing) {
+			users.reverse();
+		}
+
 		this.setState({
 			contacts: users,
 			allContacts: users,
-			loading: false
+			loading: false,
+			refreshing: false
 		});
 	};
 
@@ -39,6 +45,15 @@ export default class FlatListExample extends Component {
 			});
 			this.duringMomentum = true;
 		}
+	};
+
+	onRefresh = () => {
+		this.setState({
+			page: 1,
+			refreshing: true
+		}, () => {
+			this.getContacts();
+		});
 	};
 
 	renderContactsItem = ({item, index}) => {
@@ -109,6 +124,9 @@ export default class FlatListExample extends Component {
 				onEndReached={this.loadMore}
 				onEndReachedThreshold={0}
 				onMomentumScrollBegin={() => { this.duringMomentum = false }}
+
+				refreshing={this.state.refreshing}
+				onRefresh={this.onRefresh}
 			/>
 		);
 	}
