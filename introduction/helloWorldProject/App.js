@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { StyleSheet,SafeAreaView,View, Text } from 'react-native';
+import { StyleSheet,SafeAreaView,View, Text, Button } from 'react-native';
 
 import FlatListExample from './src/components/FlatListExample';
 
@@ -13,6 +13,14 @@ export default class App extends Component {
 	};
 
 	componentDidMount() {
+		this.getRandomUser();
+	}
+
+	getRandomUser = () => {
+		this.setState({
+			loading: true,
+		});
+
 		axios
 			.get('https://randomuser.me/api/')
 			.then(user => user.data.results[0])
@@ -23,7 +31,7 @@ export default class App extends Component {
 					loading: false
 				});
 			})
-	}
+	};
 
 	render() {
 		const {name,surname,loading} = this.state;
@@ -32,10 +40,12 @@ export default class App extends Component {
 				{/*<FlatListExample />*/}
 				<View>
 					{
-						loading ? <Text>Loading...</Text> :
-							<Text>{name} {surname}</Text>
+						loading ? <Text style={styles.text}>Loading...</Text> :
+							<Text style={styles.text}>{name} {surname}</Text>
 					}
-
+					<Button
+						title={"Random User"}
+						onPress={this.getRandomUser} />
 				</View>
 			</SafeAreaView>
 		);
@@ -47,5 +57,8 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: 'center',
 		alignItems: 'center'
+	},
+	text: {
+		textAlign: 'center'
 	}
 });
