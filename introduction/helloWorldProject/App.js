@@ -16,21 +16,19 @@ export default class App extends Component {
 		this.getRandomUser();
 	}
 
-	getRandomUser = () => {
+	getRandomUser = async () => {
 		this.setState({
 			loading: true,
 		});
 
-		axios
-			.get('https://randomuser.me/api/')
-			.then(user => user.data.results[0])
-			.then(user => {
-				this.setState({
-					name: user.name.first,
-					surname: user.name.last,
-					loading: false
-				});
-			})
+		const { data: { results } } = await axios.get('https://randomuser.me/api/');
+		const { name: { first, last } } = results[0];
+
+		this.setState({
+			name: first,
+			surname: last,
+			loading: false
+		});
 	};
 
 	render() {
