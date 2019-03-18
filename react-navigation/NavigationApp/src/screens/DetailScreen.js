@@ -3,10 +3,12 @@ import {Button, StyleSheet, Text, View} from "react-native";
 
 export default class DetailScreen extends Component {
 	render() {
-		const { navigate, push, goBack } = this.props.navigation;
+		const { navigate, push, goBack, getParam } = this.props.navigation;
+		const title = getParam('title', 'Default Title');
+
 		return (
 			<View style={styles.container}>
-				<Text>Detail</Text>
+				<Text>{title}</Text>
 				<Button
 					title="go to home page"
 					onPress={() => push('Detail')}

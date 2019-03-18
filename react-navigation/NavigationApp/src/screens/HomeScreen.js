@@ -8,8 +8,14 @@ export default class HomeScreen extends Component {
 			<View style={styles.container}>
 				<Text>Home</Text>
 				<Button
-					title="go to detail page"
+					title="Detail 1"
 					onPress={() => navigate('Detail')}
+				/>
+				<Button
+					title="Detail 2"
+					onPress={() => navigate('Detail', {
+						title: 'Detail 2'
+					})}
 				/>
 			</View>
 		);
