@@ -16,7 +16,10 @@ const AppNavigator = createStackNavigator({
 	Home: HomeScreen,
 	Detail: DetailScreen
 }, {
-	initialRouteName: "Home"
+	initialRouteName: "Home",
+	defaultNavigationOptions: {
+		headerBackTitle: null,
+	},
 });
 
 const AppContainer = createAppContainer(AppNavigator);
