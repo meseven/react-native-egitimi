@@ -2,20 +2,30 @@ import React,{Component} from "react";
 import {StyleSheet, Text, View, Button} from "react-native";
 
 export default class HomeScreen extends Component {
+	static navigationOptions = {
+		title: 'Home'
+	};
+
 	render() {
 		const { navigate } = this.props.navigation;
 		return (
 			<View style={styles.container}>
 				<Text>Home</Text>
 				<Button
-					title="Detail 1"
-					onPress={() => navigate('Detail')}
+					title="Haber 1"
+					onPress={() => navigate('Detail', {
+						title: 'Kadıköyde Yangın'
+					})}
 				/>
 				<Button
-					title="Detail 2"
+					title="Haber 2"
 					onPress={() => navigate('Detail', {
-						title: 'Detail 2'
+						title: 'Fenerbahçe Namağlup'
 					})}
+				/>
+				<Button
+					title="Haber 3"
+					onPress={() => navigate('Detail')}
 				/>
 			</View>
 		);
