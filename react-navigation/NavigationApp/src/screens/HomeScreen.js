@@ -1,10 +1,19 @@
 import React,{Component} from "react";
-import {StyleSheet, Text, View, Button} from "react-native";
+import {StyleSheet, Text, View, Button, Image} from "react-native";
+
+class TitleLogo extends Component{
+	render() {
+		return (
+			<Image
+				style={{ width: 32, height: 32}}
+				source={require('../assets/header-icon.png')} />
+		);
+	}
+}
 
 export default class HomeScreen extends Component {
 	static navigationOptions = {
-		title: 'Home',
-		headerTransparent: true
+		headerTitle: <TitleLogo />,
 	};
 
 	render() {
