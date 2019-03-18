@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-
 import { createStackNavigator, createAppContainer } from 'react-navigation';
+
+import HomeScreen from './src/screens/HomeScreen';
+import DetailScreen from './src/screens/DetailScreen';
 
 export default class App extends Component {
   render() {
@@ -9,26 +10,6 @@ export default class App extends Component {
 			<AppContainer />
     );
   }
-}
-
-class HomeScreen extends Component {
-	render() {
-		return (
-			<View style={styles.container}>
-				<Text>Home</Text>
-			</View>
-		);
-	}
-}
-
-class DetailScreen extends Component {
-	render() {
-		return (
-			<View style={styles.container}>
-				<Text>Detail</Text>
-			</View>
-		);
-	}
 }
 
 const AppNavigator = createStackNavigator({
@@ -40,11 +21,4 @@ const AppNavigator = createStackNavigator({
 
 const AppContainer = createAppContainer(AppNavigator);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  }
-});
+
