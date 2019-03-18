@@ -9,7 +9,7 @@ export default class DetailScreen extends Component {
 				<Text>Detail</Text>
 				<Button
 					title="go to home page"
-					onPress={() => push('Detail')}
+					onPress={() => push('Home')}
 				/>
 			</View>
 		);
