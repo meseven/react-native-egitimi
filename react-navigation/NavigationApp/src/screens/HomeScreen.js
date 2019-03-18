@@ -2,12 +2,12 @@ import React,{Component} from "react";
 import {StyleSheet, Text, View, Button, Image} from "react-native";
 
 class TitleLogo extends Component{
-	render() {
-		return (
+	render(){
+		return(
 			<Image
-				style={{ width: 32, height: 32}}
+				style={{ width: 38, height: 38}}
 				source={require('../assets/header-icon.png')} />
-		);
+		)
 	}
 }
 
