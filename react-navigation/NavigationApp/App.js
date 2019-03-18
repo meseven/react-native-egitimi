@@ -21,10 +21,21 @@ class HomeScreen extends Component {
 	}
 }
 
-const AppNavigator = createStackNavigator({
-	Home: {
-		screen: HomeScreen
+class DetailScreen extends Component {
+	render() {
+		return (
+			<View style={styles.container}>
+				<Text>Detail</Text>
+			</View>
+		);
 	}
+}
+
+const AppNavigator = createStackNavigator({
+	Home: HomeScreen,
+	Detail: DetailScreen
+}, {
+	initialRouteName: "Home"
 });
 
 const AppContainer = createAppContainer(AppNavigator);
