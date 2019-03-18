@@ -4,7 +4,10 @@ import {Button, StyleSheet, Text, View} from "react-native";
 export default class DetailScreen extends Component {
 	static navigationOptions = ({ navigation }) => {
 		return {
-			title: navigation.getParam('title', 'Detail')
+			title: navigation.getParam('title', 'Detail'),
+			headerStyle: {
+				backgroundColor: 'yellow'
+			},
 		}
 	};
 
