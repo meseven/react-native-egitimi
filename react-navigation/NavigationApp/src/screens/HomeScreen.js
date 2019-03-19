@@ -13,7 +13,7 @@ class TitleLogo extends Component{
 
 export default class HomeScreen extends Component {
 	static navigationOptions = {
-		headerTitle: <TitleLogo />,
+		title: "asdas",
 	};
 
 	render() {
