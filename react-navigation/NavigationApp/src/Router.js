@@ -3,7 +3,9 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 import HomeScreen from './screens/HomeScreen';
 import DetailScreen from './screens/DetailScreen';
 
-const AppNavigator = createStackNavigator({
+import AboutModal from './screens/AboutModal';
+
+const MainStack = createStackNavigator({
 	Home: HomeScreen,
 	Detail: DetailScreen
 }, {
@@ -18,4 +20,12 @@ const AppNavigator = createStackNavigator({
 	},
 });
 
-export default createAppContainer(AppNavigator);
+const ModalStack = createStackNavigator({
+	Main: MainStack,
+	AboutModal
+}, {
+	mode: 'modal',
+	headerMode: 'none'
+});
+
+export default createAppContainer(ModalStack);

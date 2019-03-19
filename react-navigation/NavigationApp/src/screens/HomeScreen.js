@@ -12,18 +12,17 @@ class TitleLogo extends Component{
 }
 
 export default class HomeScreen extends Component {
-	static navigationOptions = {
-		headerTitle: <TitleLogo />,
-		headerRight: (
-			<TouchableOpacity style={{ marginRight: 10 }} onPress={() => alert('button right')}>
-				<Text style={{ color: "#333" }}>Right</Text>
-			</TouchableOpacity>
-		),
-		headerLeft: (
-			<TouchableOpacity style={{ marginLeft: 10 }} onPress={() => alert('button left')}>
-				<Text style={{ color: "#333" }}>Left</Text>
-			</TouchableOpacity>
-		)
+	static navigationOptions = ({ navigation }) => {
+		return {
+			headerTitle: <TitleLogo />,
+			headerRight: (
+				<TouchableOpacity
+					style={{ marginRight: 10 }}
+					onPress={() => navigation.navigate('AboutModal')}>
+					<Text style={{ color: "#333" }}>About</Text>
+				</TouchableOpacity>
+			)
+		}
 	};
 
 	render() {
