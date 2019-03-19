@@ -1,5 +1,5 @@
 import React,{Component} from "react";
-import {StyleSheet, Text, View, Button, Image} from "react-native";
+import {StyleSheet, Text, View, Button, Image, TouchableOpacity} from "react-native";
 
 class TitleLogo extends Component{
 	render(){
@@ -13,7 +13,17 @@ class TitleLogo extends Component{
 
 export default class HomeScreen extends Component {
 	static navigationOptions = {
-		title: "asdas",
+		headerTitle: <TitleLogo />,
+		headerRight: (
+			<TouchableOpacity style={{ marginRight: 10 }} onPress={() => alert('button right')}>
+				<Text style={{ color: "#333" }}>Right</Text>
+			</TouchableOpacity>
+		),
+		headerLeft: (
+			<TouchableOpacity style={{ marginLeft: 10 }} onPress={() => alert('button left')}>
+				<Text style={{ color: "#333" }}>Left</Text>
+			</TouchableOpacity>
+		)
 	};
 
 	render() {

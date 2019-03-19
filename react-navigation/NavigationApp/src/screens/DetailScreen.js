@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Button, StyleSheet, Text, View} from "react-native";
+import {Button, StyleSheet, Text, TouchableOpacity, View} from "react-native";
 
 export default class DetailScreen extends Component {
 	static navigationOptions = ({ navigation }) => {
@@ -8,6 +8,11 @@ export default class DetailScreen extends Component {
 			headerStyle: {
 				backgroundColor: 'yellow'
 			},
+			headerRight: (
+				<TouchableOpacity style={{ marginRight: 10 }} onPress={() => alert('button right')}>
+					<Text style={{ color: "#333" }}>Right</Text>
+				</TouchableOpacity>
+			)
 		}
 	};
 
@@ -20,7 +25,7 @@ export default class DetailScreen extends Component {
 				<Text>{title}</Text>
 				<Button
 					title="go to home page"
-					onPress={() => push('Detail')}
+					onPress={() => navigate('Home')}
 				/>
 
 				<Button
