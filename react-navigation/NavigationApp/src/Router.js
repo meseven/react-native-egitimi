@@ -42,7 +42,6 @@ const Drawer = createDrawerNavigator({
 	Contact: {
 		screen: ContactStack,
 		navigationOptions: {
-			drawerLockMode: 'locked-closed',
 			drawerLabel: 'Contact',
 			drawerIcon: ({ tintColor }) => (
 				<Icon
@@ -57,13 +56,12 @@ const Drawer = createDrawerNavigator({
 	drawerPosition: 'right',
 	drawerWidth: 160,
 	contentOptions: {
-		activeTintColor: '#e91e63',
-		itemsContainerStyle: {
-			opacity: 1
-		},
-		iconContainerStyle: {
-			opacity: 1
-		},
+		activeTintColor: '#fff',
+		inactiveTintColor: '#d03932',
+
+		activeBackgroundColor: '#d03932',
+		inactiveBackgroundColor: '#fff',
+
 		itemStyle: {
 			flexDirection: 'row-reverse'
 		}
