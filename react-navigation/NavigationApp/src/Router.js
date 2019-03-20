@@ -11,6 +11,7 @@ import ContactScreen from './screens/ContactScreen';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 import DrawerButton from './components/DrawerButton';
+import DrawerMenu from './components/DrawerMenu';
 
 const HomeStack = createStackNavigator({
 	Home: {
@@ -63,18 +64,8 @@ const Drawer = createDrawerNavigator({
 	}
 }, {
 	drawerPosition: 'left',
-	drawerWidth: 160,
-	contentOptions: {
-		activeTintColor: '#fff',
-		inactiveTintColor: '#d03932',
-
-		activeBackgroundColor: '#d03932',
-		inactiveBackgroundColor: '#fff',
-
-		itemStyle: {
-			flexDirection: 'row-reverse'
-		}
-	}
+	drawerWidth: 200,
+	contentComponent: DrawerMenu
 });
 
 export default createAppContainer(Drawer);
