@@ -10,9 +10,14 @@ import ContactScreen from './screens/ContactScreen';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
+import DrawerButton from './components/DrawerButton';
+
 const HomeStack = createStackNavigator({
 	Home: {
-		screen: HomeScreen
+		screen: HomeScreen,
+		navigationOptions: ({ navigation }) => ({
+			headerLeft: <DrawerButton navigation={navigation} />
+		})
 	},
 	Detail: {
 		screen: DetailScreen
@@ -21,8 +26,12 @@ const HomeStack = createStackNavigator({
 
 const ContactStack = createStackNavigator({
 	Contact: {
-		screen: ContactScreen
+		screen: ContactScreen,
 	}
+}, {
+	defaultNavigationOptions: ({ navigation }) => ({
+		headerLeft: <DrawerButton navigation={navigation} />
+	})
 });
 
 const Drawer = createDrawerNavigator({
@@ -53,7 +62,7 @@ const Drawer = createDrawerNavigator({
 		}
 	}
 }, {
-	drawerPosition: 'right',
+	drawerPosition: 'left',
 	drawerWidth: 160,
 	contentOptions: {
 		activeTintColor: '#fff',
