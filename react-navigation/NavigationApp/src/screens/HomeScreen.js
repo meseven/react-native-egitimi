@@ -30,6 +30,14 @@ export default class HomeScreen extends Component {
 		return (
 			<View style={styles.container}>
 				<Text>Home</Text>
+
+				<Button
+					title="Contact Screen"
+					onPress={() => navigate('Contact', {
+						title: 'Contact'
+					})}
+				/>
+
 				<Button
 					title="Haber 1"
 					onPress={() => navigate('Detail', {

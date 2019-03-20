@@ -1,31 +1,34 @@
-import { createStackNavigator, createAppContainer } from 'react-navigation';
+import { createStackNavigator, createAppContainer, createDrawerNavigator } from 'react-navigation';
 
 import HomeScreen from './screens/HomeScreen';
 import DetailScreen from './screens/DetailScreen';
 
-import AboutModal from './screens/AboutModal';
+import ContactScreen from './screens/ContactScreen';
 
-const MainStack = createStackNavigator({
-	Home: HomeScreen,
-	Detail: DetailScreen
-}, {
-	initialRouteName: "Home",
-	headerLayoutPreset: "center",
-	defaultNavigationOptions: {
-		headerBackTitle: null,
-		headerTintColor: '#000',
-		headerTitleStyle: {
-			fontWeight: 'bold',
-		}
+// import AboutModal from './screens/AboutModal';
+
+const HomeStack = createStackNavigator({
+	Home: {
+		screen: HomeScreen
 	},
+	Detail: {
+		screen: DetailScreen
+	}
 });
 
-const ModalStack = createStackNavigator({
-	Main: MainStack,
-	AboutModal
-}, {
-	mode: 'modal',
-	headerMode: 'none'
+const ContactStack = createStackNavigator({
+	Contact: {
+		screen: ContactScreen
+	}
 });
 
-export default createAppContainer(ModalStack);
+const Drawer = createDrawerNavigator({
+	Home: {
+		screen: HomeStack
+	},
+	Contact: {
+		screen: ContactStack
+	}
+});
+
+export default createAppContainer(Drawer);
