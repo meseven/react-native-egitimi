@@ -2,14 +2,22 @@ import React, {Component} from 'react';
 import {StyleSheet, Text, View, ScrollView, TouchableOpacity} from 'react-native';
 
 export default class DrawerMenu extends Component {
+	navigateToScreen = (route) => () => {
+		this.props.navigation.navigate(route)
+	};
+
 	render() {
 		return (
 			<View style={styles.container}>
 				<ScrollView>
-					<TouchableOpacity style={styles.menuItem}>
+					<TouchableOpacity
+						onPress={this.navigateToScreen('Home')}
+						style={styles.menuItem}>
 						<Text style={styles.itemText}>Home</Text>
 					</TouchableOpacity>
-					<TouchableOpacity style={styles.menuItem}>
+					<TouchableOpacity
+						onPress={this.navigateToScreen('Contact')}
+						style={styles.menuItem}>
 						<Text style={styles.itemText}>Contact</Text>
 					</TouchableOpacity>
 					<TouchableOpacity style={styles.menuItem}>
