@@ -22,10 +22,7 @@ const ContactStack = createStackNavigator({
 		}
 	},
 	ContactDetail: {
-		screen: ContactDetail,
-		navigationOptions: {
-			title: 'Contact Detail'
-		}
+		screen: ContactDetail
 	}
 });
 
@@ -51,7 +48,8 @@ const TabNavigator = createBottomTabNavigator({
 }, {
 	tabBarOptions: {
 		activeTintColor: 'red'
-	}
+	},
+	initialRouteName: 'Contacts'
 });
 
 export default createAppContainer(TabNavigator);
