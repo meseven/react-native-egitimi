@@ -10,9 +10,12 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 // screens
 import Home from './screens/Home';
+
 import Contacts from './screens/Contacts';
 import ContactDetail from './screens/ContactDetail';
+
 import Settings from './screens/Settings';
+import SettingsModal from './components/SettingsModal';
 
 const ContactStack = createStackNavigator({
 	Contacts: {
@@ -52,4 +55,16 @@ const TabNavigator = createBottomTabNavigator({
 	initialRouteName: 'Contacts'
 });
 
-export default createAppContainer(TabNavigator);
+const ModalStack = createStackNavigator({
+	Tabs: {
+		screen: TabNavigator
+	},
+	SettingsModal: {
+		screen: SettingsModal
+	}
+},{
+	mode: 'modal',
+	headerMode: 'none'
+});
+
+export default createAppContainer(ModalStack);

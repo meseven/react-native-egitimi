@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 
 export default class Settings extends Component {
 	render() {
 		return (
 			<View style={styles.container}>
-				<Text>Settings</Text>
+				<Button
+					title="Open Settings Modal"
+					onPress={() => this.props.navigation.navigate('SettingsModal')}
+				/>
 			</View>
 		);
 	}
