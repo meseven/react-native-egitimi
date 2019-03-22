@@ -3,7 +3,8 @@ import React from 'react';
 import {
 	createStackNavigator,
 	createBottomTabNavigator,
-	createAppContainer
+	createAppContainer,
+	createDrawerNavigator
 } from 'react-navigation';
 
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -16,6 +17,8 @@ import ContactDetail from './screens/ContactDetail';
 
 import Settings from './screens/Settings';
 import SettingsModal from './components/SettingsModal';
+
+import DrawerMenu from './components/DrawerMenu';
 
 const ContactStack = createStackNavigator({
 	Contacts: {
@@ -72,4 +75,12 @@ const ModalStack = createStackNavigator({
 	headerMode: 'none'
 });
 
-export default createAppContainer(ModalStack);
+const DrawerNavigator = createDrawerNavigator({
+	ModalStack: {
+		screen: ModalStack
+	},
+}, {
+	contentComponent: DrawerMenu
+});
+
+export default createAppContainer(DrawerNavigator);
