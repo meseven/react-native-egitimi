@@ -1,3 +1,0 @@
-rootProject.name = 'PermissionsExample'
-
-include ':app'
