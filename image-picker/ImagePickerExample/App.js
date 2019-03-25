@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, Image, View, Button} from 'react-native';
+import {StyleSheet, Image, View, Button, ActivityIndicator, Text} from 'react-native';
 
 import ImagePicker from 'react-native-image-picker';
 
@@ -19,6 +19,8 @@ export default class App extends Component<Props> {
 
 	state = {
 		avatarSource: null,
+		loading: false,
+		error: null
 	};
 
 	onSelectPicture = () => {
@@ -30,18 +32,18 @@ export default class App extends Component<Props> {
 			} else if (response.customButton) {
 				console.log('User tapped custom button: ', response.customButton);
 			} else {
-				const source = {uri: response.uri};
-
-				this.setState({
-					avatarSource: source,
-				});
-
 				this.uploadPhoto(response);
 			}
 		});
 	};
 
 	uploadPhoto = async response => {
+		this.setState({
+			avatarSource: null,
+			loading: true
+		});
+
+
 		const data = new FormData();
 		data.append('fileData', {
 			uri: response.uri,
@@ -56,21 +58,42 @@ export default class App extends Component<Props> {
 			}
 		};
 
-		axios
-			.post('http://localhost:3001/upload', data, config)
-			.then(response => {
-				console.log(response);
-			})
-			.catch(error => {
-				console.log(error);
-			})
 
+		try{
+			const request = await axios.post('http://localhost:3001/upload', data, config);
+
+			const source = {uri: response.uri};
+
+			this.setState({
+				avatarSource: source,
+				loading: false,
+				error: false
+			});
+		}catch (e) {
+			this.setState({
+				loading: false,
+				error: true
+			});
+		}
 	};
 
 	render() {
+		const {avatarSource, loading, error} = this.state;
 		return (
 			<View style={styles.container}>
-				<Image source={this.state.avatarSource} style={{width: 200, height: 200}}/>
+				<View style={styles.avatarContainer}>
+					{
+						avatarSource && <Image
+							source={this.state.avatarSource}
+							style={{width: 200, height: 200}}/>
+					}
+					{
+						loading && <ActivityIndicator size={"small"} />
+					}
+					{
+						error && <Text>Error.</Text>
+					}
+				</View>
 				<Button
 					title={"Select Picture"}
 					onPress={this.onSelectPicture}
@@ -86,5 +109,16 @@ const styles = StyleSheet.create({
 		justifyContent: 'center',
 		alignItems: 'center',
 		backgroundColor: '#F5FCFF',
+	},
+	avatarContainer: {
+		marginBottom: 10,
+		width: 200,
+		height: 200,
+		borderWidth: 2,
+		borderStyle: 'dashed',
+		borderColor: '#ddd',
+		borderRadius: 5,
+		alignItems: 'center',
+		justifyContent: 'center'
 	}
 });
