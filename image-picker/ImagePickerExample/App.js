@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import {StyleSheet, Image, View, Button, Text, ActivityIndicator} from 'react-native';
+import {StyleSheet, Image, View, Button} from 'react-native';
 
 import ImagePicker from 'react-native-image-picker';
+
 import axios from 'axios';
 
-// More info on all the options is below in the API Reference... just some common use cases shown here
 const options = {
 	title: 'Select Avatar',
 	customButtons: [{name: 'fb', title: 'Choose Photo from Facebook'}],
@@ -36,7 +36,7 @@ export default class App extends Component<Props> {
 					avatarSource: source,
 				});
 
-				this.uploadPhoto(response)
+				this.uploadPhoto(response);
 			}
 		});
 	};
@@ -50,19 +50,21 @@ export default class App extends Component<Props> {
 		});
 
 		const config = {
-			method: 'POST',
 			headers: {
 				'Accept': 'application/json',
-				'Content-Type': 'multipart/form-data',
-			},
+				'Content-type': 'multipart/form-data'
+			}
 		};
 
-		axios.post("http://localhost:3001/" + "upload", data, config)
+		axios
+			.post('http://localhost:3001/upload', data, config)
 			.then(response => {
 				console.log(response);
-			}).catch((err) => {
-			console.log(err)
-		});
+			})
+			.catch(error => {
+				console.log(error);
+			})
+
 	};
 
 	render() {
