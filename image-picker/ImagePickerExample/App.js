@@ -5,12 +5,13 @@ import ImagePicker from 'react-native-image-picker';
 
 // More info on all the options is below in the API Reference... just some common use cases shown here
 const options = {
-	title: 'Select Avatar',
-	customButtons: [{ name: 'fb', title: 'Choose Photo from Facebook' }],
+	title: 'Select Photo',
+	customButtons: [{ name: 'fb', title: 'Choose Photo from Facebook' }, { name: 'other', title: 'Other' }],
 	storageOptions: {
 		skipBackup: true,
 		path: 'images',
 	},
+	allowsEditing: true
 };
 
 export default class App extends Component<Props> {
@@ -29,6 +30,11 @@ export default class App extends Component<Props> {
 				console.log('ImagePicker Error: ', response.error);
 			} else if (response.customButton) {
 				console.log('User tapped custom button: ', response.customButton);
+				if (response.customButton == 'fb') {
+				  alert('facebook')
+				}else if(response.customButton == 'other'){
+					alert('other')
+				}
 			} else {
 				const source = { uri: response.uri };
 
