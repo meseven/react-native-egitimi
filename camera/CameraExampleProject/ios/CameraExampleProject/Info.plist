@@ -56,5 +56,19 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+    <string>Kameranızı kullanmak istiyoruz.</string>
+
+    <!-- Include this only if you are planning to use the camera roll -->
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>Fotoğraf kütüphanenize erişmek istiyoruz.</string>
+
+    <!-- Include this only if you are planning to use the camera roll -->
+    <key>NSPhotoLibraryAddUsageDescription</key>
+    <string>Fotoğraf kütüphanenize erişmek istiyoruz.</string>
+
+    <!-- Include this only if you are planning to use the microphone for video recording -->
+    <key>NSMicrophoneUsageDescription</key>
+    <string>Your message to user when the microphone is accessed for the first time</string>
 </dict>
 </plist>
