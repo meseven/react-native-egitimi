@@ -2,22 +2,17 @@ import React, {Component} from 'react';
 import {StyleSheet, Text, View, TouchableOpacity, CameraRoll, PermissionsAndroid, Platform} from 'react-native';
 
 import {RNCamera} from 'react-native-camera';
+import Permissions from 'react-native-permissions'
+
 
 export default class CameraView extends Component {
 	requestWriteExternalStoragePermission = async () => {
-		try {
-			const granted = await PermissionsAndroid.request(
-				PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
-			);
-
-			if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-				console.log('You can use the camera');
-			} else {
-				console.log('Camera permission denied');
-			}
-		} catch (err) {
-			console.warn(err);
-		}
+		Permissions
+			.request('photo')
+			.then(response => {
+				console.log(response);
+			this.setState({ photoPermission: response })
+		})
 	};
 
 	takePhoto = async () => {

@@ -10,7 +10,8 @@
   "dependencies": {
     "react": "16.8.3",
     "react-native": "0.59.1",
-    "react-native-camera": "git+https://git@github.com/react-native-community/react-native-camera.git"
+    "react-native-camera": "git+https://git@github.com/react-native-community/react-native-camera.git",
+    "react-native-permissions": "^1.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",
