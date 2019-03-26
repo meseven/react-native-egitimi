@@ -1,18 +1,43 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, TouchableOpacity, CameraRoll, PermissionsAndroid, Platform} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity, CameraRoll, Platform} from 'react-native';
 
 import {RNCamera} from 'react-native-camera';
 import Permissions from 'react-native-permissions'
 
-
 export default class CameraView extends Component {
+	state = {
+		permissions: {
+			camera: null,
+			microphone: null,
+			photo: null
+		}
+	};
+
+	componentDidMount() {
+		this.checkPermissions();
+	}
+
+	checkPermissions = async () => {
+		try {
+			const permissions = await Permissions.checkMultiple(['camera', 'microphone', 'photo']);
+			this.setState({
+				permissions: {
+					...permissions
+				},
+			});
+			console.log(this.state);
+		} catch (e) {
+			console.warn(e);
+		}
+	};
+
 	requestWriteExternalStoragePermission = async () => {
-		Permissions
-			.request('photo')
-			.then(response => {
-				console.log(response);
-			this.setState({ photoPermission: response })
-		})
+		try {
+			const photoPermission = await Permissions.request('photo');
+			console.log(photoPermission);
+		} catch (e) {
+			console.warn(e);
+		}
 	};
 
 	takePhoto = async () => {
@@ -24,36 +49,31 @@ export default class CameraView extends Component {
 			};
 
 			if (Platform.OS === 'android' && Platform.Version > 22) {
-			  await this.requestWriteExternalStoragePermission();
+				await this.requestWriteExternalStoragePermission();
 			}
 
 			const data = await this.camera.takePictureAsync(options);
 
-			CameraRoll
-				.saveToCameraRoll(data.uri, 'photo')
-				.then(() => {
-					alert('Success')
-				})
-				.catch(e => {
-					alert('err')
-					console.log(e);
-				})
+
+			try {
+				const save = await CameraRoll.saveToCameraRoll(data.uri, 'photo');
+				alert('success');
+			} catch (e) {
+				alert('err')
+				console.log(e);
+			}
 		}
 	};
 
 	render() {
 		return (
 			<View style={styles.container}>
-				{
-					<RNCamera
+				<RNCamera
 					ref={ref => {
 						this.camera = ref;
 					}}
-					type={RNCamera.Constants.Type.back}
 					style={styles.preview}
 				/>
-
-				}
 				<View style={styles.bottomController}>
 					<TouchableOpacity
 						onPress={this.takePhoto}
