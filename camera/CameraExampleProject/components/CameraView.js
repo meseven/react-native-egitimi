@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import {StyleSheet, Text, View, TouchableOpacity, CameraRoll, Platform} from 'react-native';
 
 import {RNCamera} from 'react-native-camera';
-import Permissions from 'react-native-permissions'
+import Permissions from 'react-native-permissions';
+
+import NoCamAuthorized from './NoCamAuthorized';
 
 export default class CameraView extends Component {
 	state = {
@@ -69,17 +71,20 @@ export default class CameraView extends Component {
 	};
 
 	render() {
+		const {permissions} = this.state;
 		return (
 			<View style={styles.container}>
 				<RNCamera
 					ref={ref => {
 						this.camera = ref;
 					}}
+					notAuthorizedView={<NoCamAuthorized permissions={permissions} />}
 					style={styles.preview}
 				/>
 				<View style={styles.bottomController}>
 					<TouchableOpacity
 						onPress={this.takePhoto}
+						disabled={permissions.camera !== 'authorized' ? true : false}
 						style={styles.snapButton}>
 						<Text style={styles.snapText}>SNAP</Text>
 					</TouchableOpacity>
