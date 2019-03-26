@@ -34,7 +34,11 @@ export default class CameraView extends Component {
 	requestWriteExternalStoragePermission = async () => {
 		try {
 			const photoPermission = await Permissions.request('photo');
-			console.log(photoPermission);
+			this.setState({
+				permissions: {
+					photo: photoPermission
+				},
+			});
 		} catch (e) {
 			console.warn(e);
 		}
@@ -53,7 +57,6 @@ export default class CameraView extends Component {
 			}
 
 			const data = await this.camera.takePictureAsync(options);
-
 
 			try {
 				const save = await CameraRoll.saveToCameraRoll(data.uri, 'photo');
