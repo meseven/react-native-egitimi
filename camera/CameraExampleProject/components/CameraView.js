@@ -1,31 +1,64 @@
-import React, { Component } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import React, {Component} from 'react';
+import {StyleSheet, Text, View, TouchableOpacity, CameraRoll, PermissionsAndroid, Platform} from 'react-native';
 
 import {RNCamera} from 'react-native-camera';
 
 export default class CameraView extends Component {
-	takePhoto = async () => {
-		if (this.camera) {
-		  const options = {
-		  	quality: 0.7,
-				base64: true
-			};
+	requestWriteExternalStoragePermission = async () => {
+		try {
+			const granted = await PermissionsAndroid.request(
+				PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE,
+			);
 
-			const data = await this.camera.takePictureAsync(options);
-
-		  console.log(data);
+			if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+				console.log('You can use the camera');
+			} else {
+				console.log('Camera permission denied');
+			}
+		} catch (err) {
+			console.warn(err);
 		}
 	};
 
-  render() {
-    return (
-      <View style={styles.container}>
-				<RNCamera
+	takePhoto = async () => {
+		if (this.camera) {
+
+			const options = {
+				quality: 0.7,
+				base64: true
+			};
+
+			if (Platform.OS === 'android' && Platform.Version > 22) {
+			  await this.requestWriteExternalStoragePermission();
+			}
+
+			const data = await this.camera.takePictureAsync(options);
+
+			CameraRoll
+				.saveToCameraRoll(data.uri, 'photo')
+				.then(() => {
+					alert('Success')
+				})
+				.catch(e => {
+					alert('err')
+					console.log(e);
+				})
+		}
+	};
+
+	render() {
+		return (
+			<View style={styles.container}>
+				{
+					<RNCamera
 					ref={ref => {
 						this.camera = ref;
 					}}
+					type={RNCamera.Constants.Type.back}
 					style={styles.preview}
 				/>
+
+				}
 				<View style={styles.bottomController}>
 					<TouchableOpacity
 						onPress={this.takePhoto}
@@ -34,8 +67,8 @@ export default class CameraView extends Component {
 					</TouchableOpacity>
 				</View>
 			</View>
-    );
-  }
+		);
+	}
 }
 
 const styles = StyleSheet.create({
@@ -47,7 +80,7 @@ const styles = StyleSheet.create({
 	preview: {
 		flex: 1
 	},
-	bottomController: {
+	bottomController: {
 		flexDirection: 'row',
 		justifyContent: 'center',
 	},
