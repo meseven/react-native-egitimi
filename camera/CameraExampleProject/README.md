@@ -1,2 +1,2 @@
 ## Screenshot
-![](https://i.ibb.co/B3h5bfx/camera-example.jpg)
+![](https://i.ibb.co/zFdvNTV/screenshots.png)
