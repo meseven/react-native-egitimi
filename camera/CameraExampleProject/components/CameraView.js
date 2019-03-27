@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, TouchableOpacity, CameraRoll, Platform} from 'react-native';
+import {StyleSheet, Text, View, TouchableOpacity, CameraRoll, Platform, ScrollView, Image} from 'react-native';
 
 import {RNCamera} from 'react-native-camera';
 import Permissions from 'react-native-permissions';
@@ -94,8 +94,41 @@ export default class CameraView extends Component {
 						</TouchableOpacity>
 					</View>
 					<View style={{flexDirection: 'row'}}>
-						<View style={{flex:1, backgroundColor:'green', padding: 15}}>
-							<Text>Left</Text>
+						<View style={{flex:5,padding: 15}}>
+							<ScrollView
+								horizontal={true}
+								style={{ flexDirection: 'row', flex:1, height:40 }}
+							>
+								<Image
+									source={{ uri: 'http://lorempixel.com/300/400' }}
+									style={styles.photo}
+								/>
+
+								<Image
+									source={{ uri: 'http://lorempixel.com/300/400' }}
+									style={styles.photo}
+								/>
+
+								<Image
+									source={{ uri: 'http://lorempixel.com/300/400' }}
+									style={styles.photo}
+								/>
+
+								<Image
+									source={{ uri: 'http://lorempixel.com/300/400' }}
+									style={styles.photo}
+								/>
+
+								<Image
+									source={{ uri: 'http://lorempixel.com/300/400' }}
+									style={styles.photo}
+								/>
+
+								<Image
+									source={{ uri: 'http://lorempixel.com/300/400' }}
+									style={styles.photo}
+								/>
+							</ScrollView>
 						</View>
 						<View style={{flex:1, padding: 15, alignItems:'flex-end'}}>
 							<View style={{ backgroundColor:'white', width:40, padding:5, borderRadius: 3 }}>
@@ -137,5 +170,10 @@ const styles = StyleSheet.create({
 	snapText: {
 		color: '#000',
 		textAlign: 'center'
+	},
+	photo:{
+		height:40,
+		width:40,
+		marginRight: 2
 	}
 });
