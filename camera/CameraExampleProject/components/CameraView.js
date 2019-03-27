@@ -13,7 +13,8 @@ export default class CameraView extends Component {
 			microphone: null,
 			photo: null
 		},
-		counter: 0
+		counter: 0,
+		photos: []
 	};
 
 	componentDidMount() {
@@ -65,6 +66,7 @@ export default class CameraView extends Component {
 				const save = await CameraRoll.saveToCameraRoll(data.uri, 'photo');
 				this.setState({
 					counter: this.state.counter + 1,
+					photos: [{ uri: data.uri}, ...this.state.photos]
 				});
 			} catch (e) {
 				alert('err')
@@ -94,42 +96,24 @@ export default class CameraView extends Component {
 						</TouchableOpacity>
 					</View>
 					<View style={{flexDirection: 'row'}}>
-						<View style={{flex:5,padding: 15}}>
-							<ScrollView
-								horizontal={true}
-								style={{ flexDirection: 'row', flex:1, height:40 }}
-							>
-								<Image
-									source={{ uri: 'http://lorempixel.com/300/400' }}
-									style={styles.photo}
-								/>
-
-								<Image
-									source={{ uri: 'http://lorempixel.com/300/400' }}
-									style={styles.photo}
-								/>
-
-								<Image
-									source={{ uri: 'http://lorempixel.com/300/400' }}
-									style={styles.photo}
-								/>
-
-								<Image
-									source={{ uri: 'http://lorempixel.com/300/400' }}
-									style={styles.photo}
-								/>
-
-								<Image
-									source={{ uri: 'http://lorempixel.com/300/400' }}
-									style={styles.photo}
-								/>
-
-								<Image
-									source={{ uri: 'http://lorempixel.com/300/400' }}
-									style={styles.photo}
-								/>
-							</ScrollView>
-						</View>
+						{
+							this.state.photos.length > 0 &&
+							<View style={{flex:5,padding: 15}}>
+								<ScrollView
+									horizontal={true}
+									style={{ flexDirection: 'row', flex:1, height:40 }}
+								>
+									{
+										this.state.photos.map(item => (
+											<Image
+												source={{ uri: item.uri }}
+												style={styles.photo}
+											/>
+										))
+									}
+								</ScrollView>
+							</View>
+						}
 						<View style={{flex:1, padding: 15, alignItems:'flex-end'}}>
 							<View style={{ backgroundColor:'white', width:40, padding:5, borderRadius: 3 }}>
 								<Text style={{ textAlign: 'center', fontSize: 24 }}>
