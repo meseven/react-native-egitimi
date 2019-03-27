@@ -12,7 +12,8 @@ export default class CameraView extends Component {
 			camera: null,
 			microphone: null,
 			photo: null
-		}
+		},
+		counter: 0
 	};
 
 	componentDidMount() {
@@ -62,7 +63,9 @@ export default class CameraView extends Component {
 
 			try {
 				const save = await CameraRoll.saveToCameraRoll(data.uri, 'photo');
-				alert('success');
+				this.setState({
+					counter: this.state.counter + 1,
+				});
 			} catch (e) {
 				alert('err')
 				console.log(e);
@@ -94,8 +97,12 @@ export default class CameraView extends Component {
 						<View style={{flex:1, backgroundColor:'green', padding: 15}}>
 							<Text>Left</Text>
 						</View>
-						<View style={{flex:1, backgroundColor:'red', padding: 15}}>
-							<Text>Right</Text>
+						<View style={{flex:1, padding: 15, alignItems:'flex-end'}}>
+							<View style={{ backgroundColor:'white', width:40, padding:5, borderRadius: 3 }}>
+								<Text style={{ textAlign: 'center', fontSize: 24 }}>
+									{this.state.counter}
+								</Text>
+							</View>
 						</View>
 					</View>
 				</View>
