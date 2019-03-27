@@ -1,7 +1,13 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, Button} from 'react-native';
 
+import Permissions from 'react-native-permissions';
+
 export default class PermissionStatusText extends Component {
+	_openSettings = () => {
+		Permissions.openSettings();
+	};
+
 	render() {
 		const {permission, text} = this.props;
 		return (
@@ -10,6 +16,7 @@ export default class PermissionStatusText extends Component {
 					permission !== 'authorized'
 						?
 							<Button
+								onPress={this._openSettings}
 								title={`${text} erişimini etkinleştir.`}
 								style={[styles.text, styles.button]}
 							/>
@@ -29,7 +36,7 @@ const styles = StyleSheet.create({
 		padding: 10,
 		fontWeight: '600'
 	},
-	textActive: {
+	activeText: {
 		color: 'green'
 	},
 	button: {
