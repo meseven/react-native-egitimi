@@ -104,6 +104,9 @@ const styles = StyleSheet.create({
 		flex: 1
 	},
 	bottomController: {
+		position: 'absolute',
+		left: 0,
+		bottom:0,
 		flexDirection: 'row',
 		justifyContent: 'center',
 	},
