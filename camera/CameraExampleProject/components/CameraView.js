@@ -82,12 +82,22 @@ export default class CameraView extends Component {
 					style={styles.preview}
 				/>
 				<View style={styles.bottomController}>
-					<TouchableOpacity
-						onPress={this.takePhoto}
-						disabled={permissions.camera !== 'authorized' ? true : false}
-						style={styles.snapButton}>
-						<Text style={styles.snapText}>SNAP</Text>
-					</TouchableOpacity>
+					<View style={{alignItems: 'center'}}>
+						<TouchableOpacity
+							onPress={this.takePhoto}
+							disabled={permissions.camera !== 'authorized' ? true : false}
+							style={styles.snapButton}>
+							<Text style={styles.snapText}>SNAP</Text>
+						</TouchableOpacity>
+					</View>
+					<View style={{flexDirection: 'row'}}>
+						<View style={{flex:1, backgroundColor:'green', padding: 15}}>
+							<Text>Left</Text>
+						</View>
+						<View style={{flex:1, backgroundColor:'red', padding: 15}}>
+							<Text>Right</Text>
+						</View>
+					</View>
 				</View>
 			</View>
 		);
@@ -107,12 +117,12 @@ const styles = StyleSheet.create({
 		position: 'absolute',
 		left: 0,
 		bottom:0,
-		flexDirection: 'row',
-		justifyContent: 'center',
+		alignItems: 'center',
+		width: '100%'
 	},
 	snapButton: {
 		backgroundColor: '#fff',
-		flex: 1,
+		width: 80,
 		borderRadius: 6,
 		padding: 15,
 		margin: 15,
