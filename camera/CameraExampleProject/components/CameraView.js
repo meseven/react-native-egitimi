@@ -83,6 +83,8 @@ export default class CameraView extends Component {
 					ref={ref => {
 						this.camera = ref;
 					}}
+					type={RNCamera.Constants.Type.back}
+					flashMode={RNCamera.Constants.FlashMode.on}
 					notAuthorizedView={<NoCamAuthorized permissions={permissions} />}
 					style={styles.preview}
 				/>
