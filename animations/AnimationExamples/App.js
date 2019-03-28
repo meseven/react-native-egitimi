@@ -7,12 +7,13 @@ import React, {Component} from 'react';
 // import AbsolutePosition from './components/AbsolutePosition';
 // import Interpolation from './components/Interpolation';
 // import InterpolationRotate from './components/InterpolationRotate';
-import EasingExample from './components/EasingExample';
+// import EasingExample from './components/EasingExample';
+import Spring from './components/Spring';
 
 export default class App extends Component {
 	render() {
 		return (
-			<EasingExample />
+			<Spring />
 		);
 	}
 }
