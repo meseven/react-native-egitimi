@@ -10,12 +10,13 @@ import React, {Component} from 'react';
 // import EasingExample from './components/EasingExample';
 // import Spring from './components/Spring';
 // import Spring2 from './components/Spring2';
-import Event from './components/Event';
+// import Event from './components/Event';
+import Parallel from './components/Parallel';
 
 export default class App extends Component {
 	render() {
 		return (
-			<Event />
+			<Parallel />
 		);
 	}
 }
