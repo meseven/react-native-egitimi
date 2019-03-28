@@ -8,7 +8,7 @@ export default class Stagger extends Component {
 	};
 
 	startAnimation = () => {
-		Animated.sequence([
+		Animated.stagger(2000, [
 			Animated
 				.timing(this.state.animationScale, {
 					duration: 120,
