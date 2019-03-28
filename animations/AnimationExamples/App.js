@@ -9,12 +9,13 @@ import React, {Component} from 'react';
 // import InterpolationRotate from './components/InterpolationRotate';
 // import EasingExample from './components/EasingExample';
 // import Spring from './components/Spring';
-import Spring2 from './components/Spring2';
+// import Spring2 from './components/Spring2';
+import Event from './components/Event';
 
 export default class App extends Component {
 	render() {
 		return (
-			<Spring2 />
+			<Event />
 		);
 	}
 }
