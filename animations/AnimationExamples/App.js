@@ -4,11 +4,12 @@ import Timing from './components/Timing';
 import TranslatePosition from './components/TranslatePosition';
 import Scale from './components/Scale';
 import MultiField from './components/MultiField';
+import AbsolutePosition from './components/AbsolutePosition';
 
 export default class App extends Component {
 	render() {
 		return (
-			<MultiField />
+			<AbsolutePosition />
 		);
 	}
 }
