@@ -6,12 +6,13 @@ import React, {Component} from 'react';
 // import MultiField from './components/MultiField';
 // import AbsolutePosition from './components/AbsolutePosition';
 // import Interpolation from './components/Interpolation';
-import InterpolationRotate from './components/InterpolationRotate';
+// import InterpolationRotate from './components/InterpolationRotate';
+import Easing from './components/Easing';
 
 export default class App extends Component {
 	render() {
 		return (
-			<InterpolationRotate />
+			<Easing />
 		);
 	}
 }
