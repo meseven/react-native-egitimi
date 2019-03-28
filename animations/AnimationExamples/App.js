@@ -11,13 +11,14 @@ import React, {Component} from 'react';
 // import Spring from './components/Spring';
 // import Spring2 from './components/Spring2';
 // import Event from './components/Event';
-//import Parallel from './components/Parallel';
-import Sequence from './components/Sequence';
+// import Parallel from './components/Parallel';
+// import Sequence from './components/Sequence';
+import Stagger from './components/Stagger';
 
 export default class App extends Component {
 	render() {
 		return (
-			<Sequence />
+			<Stagger />
 		);
 	}
 }
