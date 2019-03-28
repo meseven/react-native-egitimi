@@ -13,12 +13,13 @@ import React, {Component} from 'react';
 // import Event from './components/Event';
 // import Parallel from './components/Parallel';
 // import Sequence from './components/Sequence';
-import Stagger from './components/Stagger';
+// import Stagger from './components/Stagger';
+import Delay from './components/Delay';
 
 export default class App extends Component {
 	render() {
 		return (
-			<Stagger />
+			<Delay />
 		);
 	}
 }
