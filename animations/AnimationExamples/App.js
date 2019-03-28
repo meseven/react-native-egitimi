@@ -8,12 +8,13 @@ import React, {Component} from 'react';
 // import Interpolation from './components/Interpolation';
 // import InterpolationRotate from './components/InterpolationRotate';
 // import EasingExample from './components/EasingExample';
-import Spring from './components/Spring';
+// import Spring from './components/Spring';
+import Spring2 from './components/Spring2';
 
 export default class App extends Component {
 	render() {
 		return (
-			<Spring />
+			<Spring2 />
 		);
 	}
 }
