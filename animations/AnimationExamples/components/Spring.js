@@ -8,7 +8,7 @@ export default class Spring extends Component {
 
 	startAnimation = () => {
 		Animated
-			.timing(this.state.animation, {
+			.spring(this.state.animation, {
 				duration: 200,
 				toValue: 2,
 			})
