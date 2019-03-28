@@ -10,9 +10,16 @@ export default class Timing extends Component {
 		Animated
 			.timing(this.state.animation, {
 				toValue: 0,
-				duration: 500
+				duration: 1000
 			})
-			.start()
+			.start(() => {
+				Animated
+					.timing(this.state.animation, {
+						toValue: 1,
+						duration: 100
+					})
+					.start()
+			})
 	};
 
 	render() {
