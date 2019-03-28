@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Animated, StyleSheet, Text, TouchableWithoutFeedback, View} from 'react-native';
 
-export default class Scale extends Component {
+export default class Timing extends Component {
 	render() {
 		return (
 			<View style={styles.container}>
