@@ -4,23 +4,24 @@ import {Animated, StyleSheet, Text, TouchableWithoutFeedback, View} from 'react-
 export default class Parallel extends Component {
 	state = {
 		animationScale: new Animated.Value(1),
-		animationOpacity: new Animated.Value(0.1)
+		animationOpacity: new Animated.Value(0.4)
 	};
 
 	startAnimation = () => {
-		Animated
-			.timing(this.state.animationScale, {
-				duration: 120,
-				toValue: 1.3,
-			})
-			.start();
-
-		Animated
-			.timing(this.state.animationOpacity, {
-				duration: 500,
-				toValue: 1,
-			})
-			.start()
+		Animated.parallel([
+			Animated
+				.timing(this.state.animationScale, {
+					duration: 120,
+					toValue: 1.3,
+				}),
+			Animated
+				.timing(this.state.animationOpacity, {
+					duration: 2000,
+					toValue: 1,
+				})
+		]).start(() => {
+			alert('bitti')
+		});
 	};
 
 	render() {
