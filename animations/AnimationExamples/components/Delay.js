@@ -14,11 +14,18 @@ export default class Delay extends Component {
 					duration: 500,
 					toValue: 1,
 				}),
+			Animated.delay(2000),
 			Animated
 				.timing(this.state.animationScale, {
 					duration: 120,
 					toValue: 1.3,
-				})
+				}),
+			Animated.delay(1000),
+			Animated
+				.timing(this.state.animationScale, {
+					duration: 120,
+					toValue: 2,
+				}),
 		]).start(() => {
 			alert('animasyon bitti!')
 		})
