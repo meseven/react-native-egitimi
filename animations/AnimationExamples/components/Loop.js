@@ -3,16 +3,29 @@ import {Animated, StyleSheet, Text, TouchableWithoutFeedback, View} from 'react-
 
 export default class Delay extends Component {
 	state = {
-
+		topValue: new Animated.Value(0)
 	};
 
 	startAnimation = () => {
-
+		Animated.loop(
+			Animated.sequence([
+				Animated
+					.timing(this.state.topValue, {
+						duration: 1000,
+						toValue: 300
+					}),
+				Animated
+					.timing(this.state.topValue, {
+						duration: 1000,
+						toValue: 0
+					}),
+			])
+		).start()
 	};
 
 	render() {
 		const animatedStyles = {
-
+			top: this.state.topValue
 		};
 
 		return (
@@ -36,7 +49,7 @@ const styles = StyleSheet.create({
 	},
 	myBox: {
 		position: 'absolute',
-		left: 0,
+		left:0,
 		top: 0,
 		width: 200,
 		height: 200,
