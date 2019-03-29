@@ -1,26 +1,40 @@
 import React, {Component} from 'react';
-import {Animated, StyleSheet, Text, TouchableWithoutFeedback, View} from 'react-native';
+import {Animated, StyleSheet, Text, Easing, TouchableWithoutFeedback, View} from 'react-native';
 
 export default class Delay extends Component {
 	state = {
-
+		animation: new Animated.Value(0)
 	};
 
 	startAnimation = () => {
-
+		Animated.loop(
+			Animated
+				.timing(this.state.animation, {
+					duration: 2400,
+					toValue: 1,
+					easing: Easing.linear
+				})
+		).start()
 	};
 
 	render() {
-		const animatedStyles = {
+		const interpolation = this.state.animation.interpolate({
+			inputRange: [0, 1],
+			outputRange: ['0deg', '360deg']
+		});
 
+		const animatedStyles = {
+			transform: [{
+				rotate: interpolation
+			}]
 		};
 
 		return (
 			<View style={styles.container}>
 				<TouchableWithoutFeedback onPress={this.startAnimation}>
-					<Animated.View style={[styles.myBox, animatedStyles]}>
-						<Text>React Native</Text>
-					</Animated.View>
+					<Animated.Image
+						source={require('../assets/react-logo.png')}
+						style={[styles.myBox, animatedStyles]} />
 				</TouchableWithoutFeedback>
 			</View>
 		);
@@ -37,7 +51,6 @@ const styles = StyleSheet.create({
 	myBox: {
 		width: 200,
 		height: 200,
-		backgroundColor: '#FFC107',
 		justifyContent: 'center',
 		alignItems: 'center'
 	}
