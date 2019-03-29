@@ -1,0 +1,3 @@
+rootProject.name = 'Windmill'
+
+include ':app'
