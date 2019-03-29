@@ -15,12 +15,13 @@ import React, {Component} from 'react';
 // import Sequence from './components/Sequence';
 // import Stagger from './components/Stagger';
 // import Delay from './components/Delay';
-import Loop from './components/Loop';
+// import Loop from './components/Loop';
+import Loop2 from './components/Loop2';
 
 export default class App extends Component {
 	render() {
 		return (
-			<Loop />
+			<Loop2 />
 		);
 	}
 }
