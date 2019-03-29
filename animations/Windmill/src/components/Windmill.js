@@ -1,12 +1,42 @@
 import React, { Component } from 'react';
-import { StyleSheet, Animated, View, Image } from 'react-native';
+import { StyleSheet, Animated, View, Image, Easing } from 'react-native';
 
 export default class Windmill extends Component {
+	state = {
+		animation: new Animated.Value(0)
+	};
+
+	componentDidMount() {
+		this.startAnimation()
+	}
+
+	startAnimation = () => {
+		Animated.loop(
+			Animated
+				.timing(this.state.animation, {
+					duration: 5000,
+					toValue: 1,
+					easing: Easing.linear
+				})
+		).start()
+	};
+
   render() {
+  	const interpolation = this.state.animation.interpolate({
+			inputRange: [0,1],
+			outputRange: ['0deg', '360deg']
+		});
+
+  	const animatedStyles = {
+  		transform: [{
+  			rotate: interpolation
+			}]
+		};
+
     return (
       <View style={styles.container}>
 				<Animated.Image
-					style={styles.windmillSpinner}
+					style={[styles.windmillSpinner, animatedStyles]}
 					source={require('../../assets/spinner.png')}
 					resizeMode="contain"
 				/>
