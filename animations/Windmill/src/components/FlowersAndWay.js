@@ -13,10 +13,11 @@ export default () => (
 
 const styles = StyleSheet.create({
 	container: {
-		alignItems: 'center'
+		alignItems: 'center',
+		zIndex: 5
 	},
 	flowers: {
 		width: '80%'
 	}
-})
+});
 
