@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 
 // import Windmill from './src/components/Windmill';
 // import Tire from './src/components/Tire';
@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#94BBA9',
-    alignItems: 'center',
     paddingTop: 200
   },
 });

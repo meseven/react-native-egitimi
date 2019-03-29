@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Animated, View } from 'react-native';
+import { StyleSheet, Animated} from 'react-native';
 
 export default class MotorBody extends Component {
 	state = {

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, Animated, View, Image, Easing} from 'react-native';
+import {StyleSheet, Animated, Easing} from 'react-native';
 
 export default class Tire extends Component {
 	state = {
