@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import CarBody from './CarBody';
+import MotorBody from './MotorBody';
 import Tire from './Tire';
 
-export default class Car extends Component {
+export default class Motor extends Component {
   render() {
     return (
       <View style={styles.container}>
 				<View style={styles.car}>
-					<CarBody />
+					<MotorBody />
 
 					<View style={styles.tire1}>
 						<Tire />
