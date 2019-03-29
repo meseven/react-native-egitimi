@@ -19,7 +19,7 @@ export default class Motor extends Component {
 		Animated.loop(
 			Animated
 				.timing(this.state.animation, {
-					duration: 3000,
+					duration: 7000,
 					toValue: -200,
 					easing: Easing.cubic
 				})
@@ -32,7 +32,7 @@ export default class Motor extends Component {
 		};
 
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, {...this.props.style}]}>
 				<Animated.View style={[styles.car, animationStyles]}>
 					<MotorBody />
 
@@ -52,6 +52,7 @@ export default class Motor extends Component {
 const styles = StyleSheet.create({
 	container: {
 		flex:1,
+		zIndex: 10
 	},
 	car:{ 
 		position: 'relative',

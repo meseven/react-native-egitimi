@@ -34,7 +34,7 @@ export default class Windmill extends Component {
 		};
 
     return (
-      <View style={styles.container}>
+      <View style={[styles.container, { ...this.props.style }]}>
 				<Animated.Image
 					style={[styles.windmillSpinner, animatedStyles]}
 					source={require('../../assets/spinner.png')}
