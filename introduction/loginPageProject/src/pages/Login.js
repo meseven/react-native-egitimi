@@ -24,7 +24,7 @@ export default class Login extends Component {
 						</View>
 					</ScrollView>
 					<View style={styles.signUpArea}>
-						<Text style={styles.signUpDescription}>Don't have an account?</Text>
+						<Text style={styles.signUpDescription}>Don`t have an account?</Text>
 						<TouchableOpacity>
 							<Text style={styles.signUpText}>Sign Up</Text>
 						</TouchableOpacity>
