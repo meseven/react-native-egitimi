@@ -1,1 +1,3 @@
-# react-native-egitimi
+# React Native Eğitimi
+
+Coming soon :)
