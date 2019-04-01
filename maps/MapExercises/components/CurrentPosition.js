@@ -14,20 +14,21 @@ export default class CurrentPosition extends Component {
 		},
 	};
 
-	componentDidMount() {
-		Permissions
-			.request('location')
-			.then(async response => {
-				const { coords } = await this.getCurrentPosition();
-				this.setState({
-					region: {
-						...this.state.region,
-						latitude: coords.latitude,
-						longitude: coords.longitude
-					},
-				});
+	async componentDidMount() {
+		const permission = await Permissions.request('location');
+		if (permission !== 'authorized') {
+		  alert('lütfen konum izinlerini verin.');
+		  return false;
+		}
 
-			})
+		const {coords} = await this.getCurrentPosition();
+		this.setState({
+			region: {
+				...this.state.region,
+				latitude: coords.latitude,
+				longitude: coords.longitude
+			},
+		});
 	}
 
 	getCurrentPosition() {
@@ -35,12 +36,12 @@ export default class CurrentPosition extends Component {
 			navigator.geolocation.getCurrentPosition(position => {
 				resolve(position)
 			}),
-			reject,
-			{
-				enableHighAccuracy: false,
-				timeout: 5000,
-				maximumAge: 1000
-			}
+				reject,
+				{
+					enableHighAccuracy: false,
+					timeout: 5000,
+					maximumAge: 1000
+				}
 		},)
 	}
 
