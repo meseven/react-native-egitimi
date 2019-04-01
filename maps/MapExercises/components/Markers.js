@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import MapView, {Marker} from "react-native-maps";
 
 export default class Markers extends Component {
@@ -57,8 +57,10 @@ export default class Markers extends Component {
 								title={marker.title}
 								description={marker.description}
 								style={{width:48, height:48}}
-								image={require('../assets/custom-marker.png')}
-							/>
+								//image={require('../assets/custom-marker.png')}
+							>
+								<View style={styles.marker} />
+							</Marker>
 						))
 					}
 				</MapView>
@@ -74,5 +76,11 @@ const styles = StyleSheet.create({
 	},
 	map: {
 		flex: 1
+	},
+	marker: {
+		width:40,
+		height: 40,
+		borderRadius: 20,
+		backgroundColor: 'red'
 	}
 });
