@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 import MapView, {Marker} from "react-native-maps";
 
+import AnimatedMarker from './AnimatedMarker';
+
 export default class Markers extends Component {
 	state = {
 		region: {
@@ -59,7 +61,7 @@ export default class Markers extends Component {
 								style={{width:48, height:48}}
 								//image={require('../assets/custom-marker.png')}
 							>
-								<View style={styles.marker} />
+								<AnimatedMarker />
 							</Marker>
 						))
 					}
@@ -77,10 +79,4 @@ const styles = StyleSheet.create({
 	map: {
 		flex: 1
 	},
-	marker: {
-		width:40,
-		height: 40,
-		borderRadius: 20,
-		backgroundColor: 'red'
-	}
 });
