@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import React, {Component} from 'react';
+import {StyleSheet, View, Text} from 'react-native';
 import MapView from "react-native-maps";
 
 import Permissions from 'react-native-permissions';
@@ -7,19 +7,42 @@ import Permissions from 'react-native-permissions';
 export default class CurrentPosition extends Component {
 	state = {
 		region: {
-			latitude: 41.0087,
-			longitude: 29.0173,
+			latitude: 2.0087,
+			longitude: 4.0173,
 			latitudeDelta: 0.0922,
 			longitudeDelta: 0.0421,
 		},
 	};
 
 	componentDidMount() {
-		Permissions.request('location').then(response => {
+		Permissions
+			.request('location')
+			.then(async response => {
+				const { coords } = await this.getCurrentPosition();
+				this.setState({
+					region: {
+						...this.state.region,
+						latitude: coords.latitude,
+						longitude: coords.longitude
+					},
+				});
 
-		})
+			})
 	}
 
+	getCurrentPosition() {
+		return new Promise((resolve, reject) => {
+			navigator.geolocation.getCurrentPosition(position => {
+				resolve(position)
+			}),
+			reject,
+			{
+				enableHighAccuracy: false,
+				timeout: 5000,
+				maximumAge: 1000
+			}
+		},)
+	}
 
 	render() {
 		return (
