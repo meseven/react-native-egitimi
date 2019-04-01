@@ -56,6 +56,8 @@ export default class Markers extends Component {
 								coordinate={marker.latlng}
 								title={marker.title}
 								description={marker.description}
+								style={{width:48, height:48}}
+								image={require('../assets/custom-marker.png')}
 							/>
 						))
 					}
