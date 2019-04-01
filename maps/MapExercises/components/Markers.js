@@ -10,10 +10,32 @@ export default class Markers extends Component {
 			latitudeDelta: 0.0922,
 			longitudeDelta: 0.0421,
 		},
-		marker: {
-			latitude: 37.78825,
-			longitude: -122.4324,
-		}
+		markers: [
+			{
+				latlng: {
+					latitude: 37.78825,
+					longitude: -122.4324,
+				},
+				title: 'Evim',
+				description: 'Lorem ipsum'
+			},
+			{
+				latlng: {
+					latitude: 37.76825,
+					longitude: -122.4324,
+				},
+				title: 'İş yerim',
+				description: 'Lorem ipsum 2'
+			},
+			{
+				latlng: {
+					latitude: 37.74825,
+					longitude: -122.4324,
+				},
+				title: 'Annem',
+				description: 'Lorem ipsum 3'
+			}
+		]
 	};
 
 	componentDidMount() {
@@ -27,11 +49,16 @@ export default class Markers extends Component {
 					style={styles.map}
 					region={this.state.region}
 				>
-					<Marker
-						coordinate={this.state.marker}
-						title={"Evim"}
-						description={"Lorem ipsum"}
-					/>
+					{
+						this.state.markers.map((marker, key) => (
+							<Marker
+								key={key}
+								coordinate={marker.latlng}
+								title={marker.title}
+								description={marker.description}
+							/>
+						))
+					}
 				</MapView>
 			</View>
 		);
