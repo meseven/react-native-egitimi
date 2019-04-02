@@ -19,7 +19,7 @@ export default class Map extends Component {
 
 	async componentDidMount() {
 		try{
-			
+
 			const { coords: { latitude, longitude } } = await this.getCurrentPosition();
 			this.setState({
 				region: {
