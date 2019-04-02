@@ -42,7 +42,7 @@ export default class CurrentPosition extends Component {
 					timeout: 5000,
 					maximumAge: 1000
 				}
-		},)
+		})
 	}
 
 	render() {
