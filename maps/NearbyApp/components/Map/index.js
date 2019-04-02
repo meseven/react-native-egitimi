@@ -19,12 +19,21 @@ export default class Map extends Component {
 
 	async componentDidMount() {
 		try{
+			
 			const { coords: { latitude, longitude } } = await this.getCurrentPosition();
+			this.setState({
+				region: {
+					...this.state.region,
+					latitude,
+					longitude
+				},
+			});
 
 			const { data: { results } } = await axios.get(`${API_ENDPOINT}location=${latitude},${longitude}&radius=5000&type=restaurant&key=${API_KEY}`)
 			this.setState({
 				places: results,
 			});
+
 		}catch (e) {
 			alert('Konum alınamadı!')
 		}
