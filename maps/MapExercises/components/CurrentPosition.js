@@ -33,9 +33,10 @@ export default class CurrentPosition extends Component {
 
 	getCurrentPosition() {
 		return new Promise((resolve, reject) => {
-			navigator.geolocation.getCurrentPosition(position => {
-				resolve(position)
-			}),
+			navigator.geolocation.getCurrentPosition(
+				position => {
+					resolve(position)
+				}),
 				reject,
 				{
 					enableHighAccuracy: false,
