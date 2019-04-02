@@ -1,0 +1,4 @@
+#Tue Apr 02 16:27:30 EET 2019
+base.0=/Users/mseven/Desktop/app/react-native-egitimi/maps/NearbyApp/android/app/build/intermediates/transforms/dexMerger/debug/0
+path.0=classes.dex
+renamed.0=classes.dex
