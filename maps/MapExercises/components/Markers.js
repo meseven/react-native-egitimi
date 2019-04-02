@@ -58,7 +58,7 @@ export default class Markers extends Component {
 								coordinate={marker.latlng}
 								title={marker.title}
 								description={marker.description}
-g								//image={require('../assets/custom-marker.png')}
+								//image={require('../assets/custom-marker.png')}
 							>
 								<AnimatedMarker />
 							</Marker>
