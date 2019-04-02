@@ -6,10 +6,10 @@ import MapView from 'react-native-maps';
 export default class App extends Component {
 	state = {
 		region: {
-			latitude: 37.78825,
-			longitude: -122.4324,
-			latitudeDelta: 0.001,
-			longitudeDelta: 0.001,
+			latitude: 41.0087,
+			longitude: 29.0173,
+			latitudeDelta: 0.0922,
+			longitudeDelta: 0.0421,
 		}
 	};
 
@@ -18,6 +18,7 @@ export default class App extends Component {
       <View style={styles.container}>
 				<MapView
           style={styles.map}
+					showsUserLocation={true}
 					region={this.state.region}
 				/>
       </View>
