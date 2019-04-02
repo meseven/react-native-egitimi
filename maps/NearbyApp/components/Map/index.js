@@ -11,7 +11,7 @@ export default class Map extends Component {
 		region: {
 			latitude: 41.0087,
 			longitude: 29.0173,
-			latitudeDelta: 0.0922,
+			latitudeDelta: 0.0622,
 			longitudeDelta: 0.0421,
 		},
 		places: []
