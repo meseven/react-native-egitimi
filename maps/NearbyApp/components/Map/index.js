@@ -5,6 +5,7 @@ import axios from 'axios';
 import {API_ENDPOINT,API_KEY} from '../../constants';
 
 import MapView, { Marker } from 'react-native-maps';
+import Places from '../Places';
 
 export default class Map extends Component {
 	state = {
@@ -78,6 +79,8 @@ export default class Map extends Component {
 						})
 					}
 				</MapView>
+
+				<Places />
 			</View>
 		);
 	}
