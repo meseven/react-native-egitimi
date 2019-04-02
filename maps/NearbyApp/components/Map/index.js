@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import {API_ENDPOINT,API_KEY} from '../../constants';
 
-import MapView from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps';
 
 export default class Map extends Component {
 	state = {
@@ -29,7 +29,7 @@ export default class Map extends Component {
 				},
 			});
 
-			const { data: { results } } = await axios.get(`${API_ENDPOINT}location=${latitude},${longitude}&radius=5000&type=restaurant&key=${API_KEY}`)
+			const { data: { results } } = await axios.get(`${API_ENDPOINT}location=${latitude},${longitude}&radius=1500&type=restaurant&key=${API_KEY}`)
 			this.setState({
 				places: results,
 			});
@@ -60,7 +60,24 @@ export default class Map extends Component {
 					style={styles.map}
 					showsUserLocation={true}
 					region={this.state.region}
-				/>
+				>
+					{
+						this.state.places.map(place => {
+							const { geometry: { location: { lat, lng }} } = place;
+							console.log(place);
+							return(
+								<Marker
+									key={place.id}
+									coordinate={{
+										latitude: lat,
+										longitude: lng
+									}}
+									title={place.name}
+								/>
+							)
+						})
+					}
+				</MapView>
 			</View>
 		);
 	}
