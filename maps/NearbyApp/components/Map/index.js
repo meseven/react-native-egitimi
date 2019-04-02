@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
 import {StyleSheet, View} from 'react-native';
+import axios from 'axios';
+
+import {API_ENDPOINT,API_KEY} from '../../constants';
 
 import MapView from 'react-native-maps';
 
@@ -10,13 +13,18 @@ export default class Map extends Component {
 			longitude: 29.0173,
 			latitudeDelta: 0.0922,
 			longitudeDelta: 0.0421,
-		}
+		},
+		places: []
 	};
 
 	async componentDidMount() {
 		try{
-			const data = await this.getCurrentPosition();
-			console.log(data);
+			const { coords: { latitude, longitude } } = await this.getCurrentPosition();
+
+			const { data: { results } } = await axios.get(`${API_ENDPOINT}location=${latitude},${longitude}&radius=5000&type=restaurant&key=${API_KEY}`)
+			this.setState({
+				places: results,
+			});
 		}catch (e) {
 			alert('Konum alınamadı!')
 		}
