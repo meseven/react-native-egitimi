@@ -80,7 +80,9 @@ export default class Map extends Component {
 					}
 				</MapView>
 
-				<Places />
+				<View style={styles.placesContainer}>
+					<Places />
+				</View>
 			</View>
 		);
 	}
@@ -93,5 +95,11 @@ const styles = StyleSheet.create({
 	},
 	map: {
 		flex: 1
+	},
+	placesContainer: {
+		position: 'absolute',
+		bottom:0,
+		left: 0,
+		width: '100%'
 	}
 });

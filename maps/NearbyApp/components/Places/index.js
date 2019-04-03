@@ -20,7 +20,7 @@ export default class Places extends Component {
 const styles = StyleSheet.create({
 	container: {
 		width: '100%',
-		height: 250,
-		backgroundColor: '#f1f1f1'
+		height: 200,
+		padding: 10
 	}
 });
