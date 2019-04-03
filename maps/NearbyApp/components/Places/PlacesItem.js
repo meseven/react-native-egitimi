@@ -21,7 +21,7 @@ export default class PlacesItem extends Component {
 
 		let source;
 		if (photos) {
-			source = {uri: `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${photos[0].photo_reference}&key=${API_KEY}`}
+			source = {uri: `${API_ENDPOINT}/photo?maxwidth=400&photoreference=${photos[0].photo_reference}&key=${API_KEY}`}
 		} else {
 			source = require('../../assets/no-image.jpg')
 		}
