@@ -67,6 +67,7 @@ export default class Map extends Component {
 					style={styles.map}
 					showsUserLocation={true}
 					region={this.state.region}
+					ref={ref => this.map = ref}
 				>
 					{
 						this.state.places.map(place => {
@@ -88,7 +89,7 @@ export default class Map extends Component {
 
 				<View style={styles.placesContainer}>
 					{
-						this.state.fetching ? <Text style={styles.loading}>Loading nearby places...</Text> : <Places places={this.state.places} />
+						this.state.fetching ? <Text style={styles.loading}>Loading nearby places...</Text> : <Places map={this.map} places={this.state.places} />
 					}
 				</View>
 			</View>
