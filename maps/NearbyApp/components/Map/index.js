@@ -32,7 +32,7 @@ export default class Map extends Component {
 				fetching: true
 			});
 
-			const { data: { results } } = await axios.get(`${API_ENDPOINT}location=${latitude},${longitude}&radius=1500&type=restaurant&key=${API_KEY}`)
+			const { data: { results } } = await axios.get(`${API_ENDPOINT}/nearbysearch/json?location=${latitude},${longitude}&radius=1500&type=restaurant&key=${API_KEY}`)
 			this.setState({
 				places: results,
 				fetching: false
