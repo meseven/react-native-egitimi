@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
+import PlacesItem from './PlacesItem';
 
 export default class Places extends Component {
 	render() {
@@ -7,7 +8,7 @@ export default class Places extends Component {
 			<View style={styles.container}>
 				<FlatList
 					data={[{key:'a'}, {key:'b'}, {key:'c'}]}
-					renderItem={({ item }) => <Text>{item.key}</Text>}
+					renderItem={({ item }) => <PlacesItem item={item} />}
 					horizontal={true}
 				/>
 			</View>
