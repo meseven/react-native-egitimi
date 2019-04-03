@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, Text} from 'react-native';
 import axios from 'axios';
 
 import {API_ENDPOINT,API_KEY} from '../../constants';
@@ -15,7 +15,8 @@ export default class Map extends Component {
 			latitudeDelta: 0.0622,
 			longitudeDelta: 0.0421,
 		},
-		places: []
+		places: [],
+		fetching: false
 	};
 
 	async componentDidMount() {
@@ -28,14 +29,19 @@ export default class Map extends Component {
 					latitude,
 					longitude
 				},
+				fetching: true
 			});
 
 			const { data: { results } } = await axios.get(`${API_ENDPOINT}location=${latitude},${longitude}&radius=1500&type=restaurant&key=${API_KEY}`)
 			this.setState({
 				places: results,
+				fetching: false
 			});
 
 		}catch (e) {
+			this.setState({
+				fetching: false
+			});
 			alert('Konum alınamadı!')
 		}
 	}
@@ -81,7 +87,9 @@ export default class Map extends Component {
 				</MapView>
 
 				<View style={styles.placesContainer}>
-					<Places places={this.state.places} />
+					{
+						this.state.fetching ? <Text style={styles.loading}>Loading nearby places...</Text> : <Places places={this.state.places} />
+					}
 				</View>
 			</View>
 		);
@@ -100,6 +108,15 @@ const styles = StyleSheet.create({
 		position: 'absolute',
 		left: 0,
 		bottom: 0,
-		width: '100%'
+		width: '100%',
+		height: 140,
+		alignItems: 'center',
+		justifyContent: 'center'
+	},
+	loading: {
+		padding: 10,
+		backgroundColor: '#f1f1f1',
+		fontSize: 13,
+		color: '#333'
 	}
 });
