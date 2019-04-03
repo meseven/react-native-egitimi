@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
+
 import PlacesItem from './PlacesItem';
 
 export default class Places extends Component {

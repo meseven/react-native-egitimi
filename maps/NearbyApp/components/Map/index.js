@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import {StyleSheet, View, Text} from 'react-native';
 import axios from 'axios';
 
-import {API_ENDPOINT,API_KEY} from '../../constants';
+import {API_ENDPOINT, API_KEY} from '../../constants';
 
-import MapView, { Marker } from 'react-native-maps';
+import MapView, {Marker} from 'react-native-maps';
 import Places from '../Places';
 
 export default class Map extends Component {
@@ -15,14 +15,14 @@ export default class Map extends Component {
 			latitudeDelta: 0.0622,
 			longitudeDelta: 0.0421,
 		},
-		places: [],
+		places: [],
 		fetching: false
 	};
 
 	async componentDidMount() {
-		try{
+		try {
 
-			const { coords: { latitude, longitude } } = await this.getCurrentPosition();
+			const {coords: {latitude, longitude}} = await this.getCurrentPosition();
 			this.setState({
 				region: {
 					...this.state.region,
@@ -32,13 +32,13 @@ export default class Map extends Component {
 				fetching: true
 			});
 
-			const { data: { results } } = await axios.get(`${API_ENDPOINT}/nearbysearch/json?location=${latitude},${longitude}&radius=1500&type=restaurant&key=${API_KEY}`)
+			const {data: {results}} = await axios.get(`${API_ENDPOINT}/nearbysearch/json?location=${latitude},${longitude}&radius=1500&type=restaurant&key=${API_KEY}`)
 			this.setState({
 				places: results,
 				fetching: false
 			});
 
-		}catch (e) {
+		} catch (e) {
 			this.setState({
 				fetching: false
 			});
@@ -46,7 +46,7 @@ export default class Map extends Component {
 		}
 	}
 
-	getCurrentPosition(){
+	getCurrentPosition() {
 		return new Promise((resolve, reject) => {
 			navigator.geolocation.getCurrentPosition(
 				position => resolve(position), // success
@@ -71,9 +71,9 @@ export default class Map extends Component {
 				>
 					{
 						this.state.places.map(place => {
-							const { geometry: { location: { lat, lng }} } = place;
+							const {geometry: {location: {lat, lng}}} = place;
 							console.log(place);
-							return(
+							return (
 								<Marker
 									key={place.id}
 									coordinate={{
@@ -89,7 +89,8 @@ export default class Map extends Component {
 
 				<View style={styles.placesContainer}>
 					{
-						this.state.fetching ? <Text style={styles.loading}>Loading nearby places...</Text> : <Places map={this.map} places={this.state.places} />
+						this.state.fetching ? <Text style={styles.loading}>Loading nearby places...</Text> :
+							<Places map={this.map} places={this.state.places}/>
 					}
 				</View>
 			</View>
@@ -105,7 +106,7 @@ const styles = StyleSheet.create({
 	map: {
 		flex: 1
 	},
-	placesContainer: {
+	placesContainer: {
 		position: 'absolute',
 		left: 0,
 		bottom: 0,
