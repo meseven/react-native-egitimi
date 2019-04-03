@@ -10,6 +10,8 @@ export default class Places extends Component {
 					data={[{key:'a'}, {key:'b'}, {key:'c'}]}
 					renderItem={({ item }) => <PlacesItem item={item} />}
 					horizontal={true}
+					ItemSeparatorComponent={() => <View style={{ marginRight: 10 }} />}
+					showsHorizontalScrollIndicator={false}
 				/>
 			</View>
 		);
@@ -19,8 +21,7 @@ export default class Places extends Component {
 const styles = StyleSheet.create({
 	container: {
 		width: '100%',
-		height: 200,
+		height: 140,
 		padding: 10,
-		backgroundColor: '#f1f1f1'
 	}
 });
