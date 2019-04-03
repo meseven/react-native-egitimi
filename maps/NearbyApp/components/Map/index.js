@@ -81,7 +81,7 @@ export default class Map extends Component {
 				</MapView>
 
 				<View style={styles.placesContainer}>
-					<Places />
+					<Places places={this.state.places} />
 				</View>
 			</View>
 		);

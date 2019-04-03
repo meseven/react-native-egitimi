@@ -5,7 +5,7 @@ export default class PlacesItem extends Component {
   render() {
     return (
       <View style={styles.itemContainer}>
-				<Text>{this.props.item.key}</Text>
+				<Text>{this.props.item.name}</Text>
 			</View>
     );
   }
