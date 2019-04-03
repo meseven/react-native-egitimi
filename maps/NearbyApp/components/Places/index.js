@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, FlatList } from 'react-native';
 
 export default class Places extends Component {
 	render() {
 		return (
 			<View style={styles.container}>
-				<Text>selam!</Text>
+				<FlatList
+					data={[{key:'a'}, {key:'b'}, {key:'c'}]}
+					renderItem={({ item }) => <Text>{item.key}</Text>}
+					horizontal={true}
+				/>
 			</View>
 		);
 	}
