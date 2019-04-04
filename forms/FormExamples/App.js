@@ -42,7 +42,7 @@ export default class App extends Component {
 									autoCapitalize={'none'}
 								/>
 
-								{ (errors.email ) && <Text style={{color: 'red'}}>{errors.email}</Text>}
+								{ (errors.email && touched.email) && <Text style={{color: 'red'}}>{errors.email}</Text>}
 							</Item>
 
 							<Button
