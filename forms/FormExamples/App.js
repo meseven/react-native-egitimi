@@ -33,7 +33,7 @@ export default class App extends Component {
 				>
 					{({values, handleChange, handleSubmit, errors}) => (
 						<Content style={{padding: 10}}>
-							<Item>
+							<Item error={!!errors.email}>
 								<Input
 									onChangeText={handleChange('email')}
 									value={values.email}
