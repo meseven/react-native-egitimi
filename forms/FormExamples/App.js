@@ -1,17 +1,24 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
 
-import { Container, Header, Content, Input, Item } from 'native-base';
+import { Container, Header, Body, Title, Content, Input, Item, Text, Button } from 'native-base';
 
 export default class App extends Component {
   render() {
     return (
 			<Container>
-				<Header />
-				<Content>
-					<Item regular>
-						<Input placeholder='Regular Textbox' />
+				<Header>
+					<Body>
+            <Title>Signup</Title>
+					</Body>
+				</Header>
+				<Content style={{ padding: 10 }}>
+					<Item>
+						<Input placeholder='e-mail' />
 					</Item>
+
+					<Button block style={{ marginTop: 10 }}>
+						<Text>Primary</Text>
+					</Button>
 				</Content>
 			</Container>
     );
