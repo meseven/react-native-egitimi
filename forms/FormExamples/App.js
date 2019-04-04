@@ -1,21 +1,19 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
+import { Container, Header, Content, Input, Item } from 'native-base';
+
 export default class App extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-      </View>
+			<Container>
+				<Header />
+				<Content>
+					<Item regular>
+						<Input placeholder='Regular Textbox' />
+					</Item>
+				</Content>
+			</Container>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  }
-});
