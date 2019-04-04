@@ -27,21 +27,22 @@ export default class App extends Component {
 							email: Yup
 								.string()
 								.email('geçersiz format.')
-								.required('bu alan zorunlu')
+								.required('bu alan zorunlu.')
 						})
 					}
 				>
-					{({values, handleChange, handleSubmit, errors}) => (
+					{({values, handleChange, handleSubmit, errors, touched, setFieldTouched}) => (
 						<Content style={{padding: 10}}>
-							<Item error={!!errors.email}>
+							<Item error={errors.email && touched.email}>
 								<Input
 									onChangeText={handleChange('email')}
 									value={values.email}
 									placeholder='e-mail'
+									onBlur={() => setFieldTouched('email')}
 									autoCapitalize={'none'}
 								/>
 
-								<Text style={{color: 'red'}}>{errors.email}</Text>
+								{ (errors.email ) && <Text style={{color: 'red'}}>{errors.email}</Text>}
 							</Item>
 
 							<Button
