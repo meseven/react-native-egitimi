@@ -21,7 +21,11 @@ export default class SignupForm extends Component {
   render() {
     return (
 			<Formik
-				initialValues={{email: '', password: '', passwordConfirm: ''}}
+				initialValues={{
+					email: '',
+					password: '',
+					passwordConfirm: ''
+				}}
 				onSubmit={this._handleSubmit}
 				validationSchema={validations}
 			>
