@@ -20,14 +20,22 @@ export default class App extends Component {
 					</Body>
 				</Header>
 				<Formik
-					initialValues={{email: ''}}
+					initialValues={{email: '', password: '', passwordConfirm: ''}}
 					onSubmit={this._handleSubmit}
 					validationSchema={
 						Yup.object().shape({
 							email: Yup
 								.string()
-								.email('geçersiz format.')
-								.required('bu alan zorunlu.')
+								.email()
+								.required(),
+							password: Yup
+								.string()
+								.min(6)
+								.required(),
+							passwordConfirm: Yup
+								.string()
+								.oneOf([Yup.ref('password')], 'Passwords not matched.')
+								.required()
 						})
 					}
 				>
@@ -43,6 +51,32 @@ export default class App extends Component {
 								/>
 
 								{ (errors.email && touched.email) && <Text style={{color: 'red'}}>{errors.email}</Text>}
+							</Item>
+
+							<Item error={errors.password && touched.password}>
+								<Input
+									onChangeText={handleChange('password')}
+									value={values.password}
+									placeholder='password'
+									onBlur={() => setFieldTouched('password')}
+									autoCapitalize={'none'}
+									secureTextEntry={true}
+								/>
+
+								{ (errors.password && touched.password) && <Text style={{color: 'red'}}>{errors.password}</Text>}
+							</Item>
+
+							<Item error={errors.passwordConfirm && touched.passwordConfirm}>
+								<Input
+									onChangeText={handleChange('passwordConfirm')}
+									value={values.passwordConfirm}
+									placeholder='password confirmation'
+									onBlur={() => setFieldTouched('passwordConfirm')}
+									autoCapitalize={'none'}
+									secureTextEntry={true}
+								/>
+
+								{ (errors.passwordConfirm && touched.passwordConfirm) && <Text style={{color: 'red'}}>{errors.passwordConfirm}</Text>}
 							</Item>
 
 							<Button
