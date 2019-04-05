@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import {Container, Header, Body, Title, Content, Input, Item, Text, Button} from 'native-base';
+import {Container, Header, Body, Title, Content, Input, Item, Text, Button, Spinner} from 'native-base';
 
 import {Formik} from 'formik';
 import * as Yup from 'yup';
@@ -22,8 +22,10 @@ export default class App extends Component {
 	_handleSubmit = async (values, bag) => {
 		try {
 			await api(values);
+			bag.setSubmitting(false);
 			alert('welcome')
 		}catch (e) {
+			bag.setSubmitting(false);
 			bag.setErrors(e)
 		}
 	};
@@ -56,7 +58,16 @@ export default class App extends Component {
 						})
 					}
 				>
-					{({values, handleChange, handleSubmit, errors, touched, setFieldTouched, isValid}) => (
+					{({
+						values,
+						handleChange,
+						handleSubmit,
+						errors,
+						touched,
+						setFieldTouched,
+						isValid,
+						isSubmitting
+					}) => (
 						<Content style={{padding: 10}}>
 							<Item error={errors.email && touched.email}>
 								<Input
@@ -99,9 +110,11 @@ export default class App extends Component {
 
 							<Button
 								block
-								disabled={!isValid}
+								disabled={!isValid || isSubmitting}
 								onPress={handleSubmit}
 								style={{marginTop: 10}}>
+
+								{ isSubmitting && <Spinner size={'small'} color={'white'} /> }
 								<Text>join</Text>
 							</Button>
 						</Content>
