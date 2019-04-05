@@ -5,10 +5,27 @@ import {Container, Header, Body, Title, Content, Input, Item, Text, Button} from
 import {Formik} from 'formik';
 import * as Yup from 'yup';
 
+const api = user => {
+	return new Promise((resolve, reject) => {
+		setTimeout(() => {
+			if (user.email === 'hi@hi.com') {
+			  reject({ email: 'email already use.' })
+			}
+
+			resolve();
+		}, 2000)
+	})
+};
+
 export default class App extends Component {
 
-	_handleSubmit = values => {
-		alert(JSON.stringify(values))
+	_handleSubmit = async (values, bag) => {
+		try {
+			await api(values);
+			alert('welcome')
+		}catch (e) {
+			bag.setErrors(e)
+		}
 	};
 
 	render() {
