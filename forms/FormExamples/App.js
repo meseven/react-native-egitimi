@@ -39,7 +39,7 @@ export default class App extends Component {
 						})
 					}
 				>
-					{({values, handleChange, handleSubmit, errors, touched, setFieldTouched}) => (
+					{({values, handleChange, handleSubmit, errors, touched, setFieldTouched, isValid}) => (
 						<Content style={{padding: 10}}>
 							<Item error={errors.email && touched.email}>
 								<Input
@@ -48,6 +48,7 @@ export default class App extends Component {
 									placeholder='e-mail'
 									onBlur={() => setFieldTouched('email')}
 									autoCapitalize={'none'}
+									keyboardType={'email-address'}
 								/>
 
 								{ (errors.email && touched.email) && <Text style={{color: 'red'}}>{errors.email}</Text>}
@@ -81,6 +82,7 @@ export default class App extends Component {
 
 							<Button
 								block
+								disabled={!isValid}
 								onPress={handleSubmit}
 								style={{marginTop: 10}}>
 								<Text>join</Text>
