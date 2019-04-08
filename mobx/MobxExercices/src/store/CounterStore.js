@@ -1,13 +1,13 @@
-import {observable} from 'mobx';
+import {observable, action} from 'mobx';
 
 class CounterStore{
 	@observable count = 1;
 
-	decrement = () => {
+	@action decrement = () => {
 		this.count--;
 	}
 
-	increment = () => {
+	@action increment = () => {
 		this.count++;
 	}
 }
