@@ -1,4 +1,8 @@
-import {observable, autorun, action} from 'mobx';
+import {observable, autorun, action, configure} from 'mobx';
+
+configure({
+	enforceActions: "observed"
+});
 
 class PersonStore{
 	@observable firstname = "None";
