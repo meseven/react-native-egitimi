@@ -1,15 +1,20 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
+import {Provider} from 'mobx-react';
+import store from './src/store';
+
 import Counter from './src/components/Counter';
 import Person from './src/components/Person';
 
 export default class App extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Counter />
-      </View>
+      <Provider {...store}>
+        <View style={styles.container}>
+          <Counter />
+        </View>
+      </Provider>
     );
   }
 }
