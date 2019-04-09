@@ -20,7 +20,10 @@ class UserStore{
 				this.loading = false;
 			})
 		}catch (e) {
-			this.loading = false;
+			runInAction(() => {
+				this.loading = false;
+			});
+
 			alert('error')
 		}
 	}
