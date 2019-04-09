@@ -1,4 +1,4 @@
-import {observable,configure, action} from 'mobx';
+import {observable,configure, action, runInAction} from 'mobx';
 import axios from 'axios';
 
 configure({
@@ -12,16 +12,25 @@ class UserStore{
 		axios
 			.get('https://randomuser.me/api/?results=10')
 			.then(response => response.data.results)
-			.then(this.fetchUsersSuccess, this.fetchUsersError)
+			.then(
+				users => {
+					runInAction(() => {
+						this.users = users;
+					})
+				},
+				error => {
+					alert('error')
+				}
+			)
 	}
 
-	@action.bound fetchUsersSuccess(users){
+	/*@action.bound fetchUsersSuccess(users){
 		this.users = users;
 	}
 
 	@action.bound fetchUsersError(){
 		alert('error')
-	}
+	}*/
 }
 
 export default new UserStore()
