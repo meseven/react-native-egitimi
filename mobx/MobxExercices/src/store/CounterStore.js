@@ -1,7 +1,13 @@
-import {observable, action} from 'mobx';
+import {observable, action, autorun} from 'mobx';
 
 class CounterStore{
 	@observable count = 1;
+
+	constructor(){
+		autorun(() => {
+			alert(this.count)
+		})
+	}
 
 	@action decrement = () => {
 		this.count--;
