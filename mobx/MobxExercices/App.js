@@ -6,13 +6,14 @@ import store from './src/store';
 
 import Counter from './src/components/Counter';
 import Person from './src/components/Person';
+import Users from './src/components/Users';
 
 export default class App extends Component {
   render() {
     return (
       <Provider {...store}>
         <View style={styles.container}>
-          <Person />
+          <Users />
         </View>
       </Provider>
     );
