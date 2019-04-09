@@ -12,7 +12,7 @@ export default class App extends Component {
     return (
       <Provider {...store}>
         <View style={styles.container}>
-          <Counter />
+          <Person />
         </View>
       </Provider>
     );

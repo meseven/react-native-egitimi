@@ -1,4 +1,4 @@
-import {observable, autorun, action, configure, computed} from 'mobx';
+import {observable, autorun, action, configure, computed, runInAction} from 'mobx';
 
 configure({
 	enforceActions: "observed"
@@ -15,8 +15,12 @@ class PersonStore{
 	}
 
 	@action changeName(){
-		this.firstname = "Mehmet";
-		this.surname = "Seven"
+		setTimeout(() => {
+			runInAction(() => {
+				this.firstname = "Mehmet";
+				this.surname = "Seven";
+			})
+		}, 2000)
 	}
 
 	@computed get fullName(){
