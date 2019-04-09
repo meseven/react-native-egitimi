@@ -12,14 +12,14 @@ class UserStore{
 		axios
 			.get('https://randomuser.me/api/?results=10')
 			.then(response => response.data.results)
-			.then(this.fetchUsersSucces, this.fetchUsersError)
+			.then(this.fetchUsersSuccess, this.fetchUsersError)
 	}
 
-	@action fetchUsersSucces = (users) => {
+	@action.bound fetchUsersSuccess(users){
 		this.users = users;
 	}
 
-	@action fetchUsersError = () => {
+	@action.bound fetchUsersError(){
 		alert('error')
 	}
 }
