@@ -7,14 +7,20 @@ configure({
 
 class UserStore{
 	@observable users = [];
+	@observable loading = false;
 
 	@action async fetchUsers (){
+		this.loading = true;
+		this.users = [];
+
 		try{
 			const { data: {results} } = await axios.get('https://randomuser.me/api/?results=10');
 			runInAction(() => {
 				this.users = results;
+				this.loading = false;
 			})
 		}catch (e) {
+			this.loading = false;
 			alert('error')
 		}
 	}
