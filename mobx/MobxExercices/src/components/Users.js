@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 
 import {observer,inject} from 'mobx-react';
 
@@ -10,9 +10,10 @@ export default class Users extends Component {
   	const {UserStore} = this.props;
     return (
       <View>
-				{
-					UserStore.loading ? <ActivityIndicator size={"small"} /> : <Button title={"fetch users"} onPress={() => UserStore.fetchUsers()}/>
-				}
+				<Button
+					title={"fetch users"}
+					onPress={() => UserStore.fetchUsers()}
+				/>
 
 				<View>
 					{
