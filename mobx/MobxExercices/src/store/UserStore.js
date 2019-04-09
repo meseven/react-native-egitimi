@@ -16,7 +16,7 @@ class UserStore{
 		this.users = [];
 
 		try{
-			const { data: {results} } = await axios.get('https://randomusers.me/api/?results=10');
+			const { data: {results} } = await axios.get('https://randomuser.me/api/?results=10');
 			runInAction(() => {
 				this.users = results;
 				this.loading = false;
