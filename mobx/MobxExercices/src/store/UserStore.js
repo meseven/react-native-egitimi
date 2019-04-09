@@ -8,28 +8,16 @@ configure({
 class UserStore{
 	@observable users = [];
 
-	@action fetchUsers (){
-		axios
-			.get('https://randomuser.me/api/?results=10')
-			.then(response => response.data.results)
-			.then(users => {
-					runInAction(() => {
-						this.users = users;
-					})
-				}
-			)
-			.catch(error => {
-				alert('error')
+	@action async fetchUsers (){
+		try{
+			const { data: {results} } = await axios.get('https://randomusser.me/api/?results=10');
+			runInAction(() => {
+				this.users = results;
 			})
+		}catch (e) {
+			alert('error')
+		}
 	}
-
-	/*@action.bound fetchUsersSuccess(users){
-		this.users = users;
-	}
-
-	@action.bound fetchUsersError(){
-		alert('error')
-	}*/
 }
 
 export default new UserStore()
