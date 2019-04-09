@@ -1,4 +1,4 @@
-import {observable, action, autorun, reaction} from 'mobx';
+import {observable, action, autorun, reaction, when} from 'mobx';
 
 class CounterStore{
 	@observable count = 1;
@@ -8,13 +8,18 @@ class CounterStore{
 			alert(this.count)
 		})*/
 
-		reaction(
+		/*reaction(
 			() => this.count,
 			count => {
 				if (count === 5) {
 				  alert("Başardın")
 				}
 			}
+		)*/
+
+		when(
+			() => this.count === 5,
+			() => alert("Başardın!")
 		)
 	}
 
