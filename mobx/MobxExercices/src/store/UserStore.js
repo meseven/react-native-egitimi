@@ -8,13 +8,15 @@ configure({
 class UserStore{
 	@observable users = [];
 	@observable loading = false;
+	@observable error = '';
 
 	@action async fetchUsers (){
 		this.loading = true;
+		this.error = '';
 		this.users = [];
 
 		try{
-			const { data: {results} } = await axios.get('https://randomuser.me/api/?results=10');
+			const { data: {results} } = await axios.get('https://randomusers.me/api/?results=10');
 			runInAction(() => {
 				this.users = results;
 				this.loading = false;
@@ -22,9 +24,8 @@ class UserStore{
 		}catch (e) {
 			runInAction(() => {
 				this.loading = false;
+				this.error = 'Error retrieving information from server.';
 			});
-
-			alert('error')
 		}
 	}
 }

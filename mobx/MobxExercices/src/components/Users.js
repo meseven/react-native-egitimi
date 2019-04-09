@@ -17,11 +17,14 @@ export default class Users extends Component {
 
 				<View>
 					{
-						UserStore.users.map((user, key) => (
-							<View key={key}>
-								<Text>{ user.name.first }</Text>
-							</View>
-						))
+						UserStore.error ? <Text>{UserStore.error}</Text> :
+							(
+								UserStore.users.map((user, key) => (
+									<View key={key}>
+										<Text>{ user.name.first }</Text>
+									</View>
+								))
+							)
 					}
 				</View>
 			</View>
