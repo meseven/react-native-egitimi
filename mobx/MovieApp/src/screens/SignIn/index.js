@@ -15,11 +15,16 @@ export default class SignIn extends Component {
 				<Content>
 					<Form>
 						<Item>
-							<Input placeholder="Username" />
+							<Input
+								returnKeyType={'next'}
+								onSubmitEditing={() => this.refs['password']._root.focus()}
+								placeholder="Username" />
 						</Item>
 						<Item last>
 							<Input
+								ref="password"
 								secureTextEntry={true}
+								returnKeyType={'go'}
 								placeholder="Password" />
 						</Item>
 					</Form>

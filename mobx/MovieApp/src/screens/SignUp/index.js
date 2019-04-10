@@ -14,15 +14,23 @@ export default class SignUp extends Component {
 				<Content>
 					<Form>
 						<Item>
-							<Input placeholder="Username" />
+							<Input
+								returnKeyType={'next'}
+								onSubmitEditing={() => this.refs['password']._root.focus()}
+								placeholder="Username" />
 						</Item>
 						<Item last>
 							<Input
+								ref="password"
+								returnKeyType={'next'}
+								onSubmitEditing={() => this.refs['passwordConfirm']._root.focus()}
 								secureTextEntry={true}
 								placeholder="Password" />
 						</Item>
 						<Item last>
 							<Input
+								ref="passwordConfirm"
+								returnKeyType={'go'}
 								secureTextEntry={true}
 								placeholder="Password confirm" />
 						</Item>
