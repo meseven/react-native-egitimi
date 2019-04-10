@@ -11,31 +11,31 @@ export default class SignUp extends Component {
 						<Title>Sign Up</Title>
 					</Body>
 				</Header>
-				<Content>
-					<Form>
-						<Item>
-							<Input
-								returnKeyType={'next'}
-								onSubmitEditing={() => this.refs['password']._root.focus()}
-								placeholder="Username" />
-						</Item>
-						<Item last>
-							<Input
-								ref="password"
-								returnKeyType={'next'}
-								onSubmitEditing={() => this.refs['passwordConfirm']._root.focus()}
-								secureTextEntry={true}
-								placeholder="Password" />
-						</Item>
-						<Item last>
-							<Input
-								ref="passwordConfirm"
-								returnKeyType={'go'}
-								secureTextEntry={true}
-								placeholder="Password confirm" />
-						</Item>
-					</Form>
-					<Button full style={{ margin: 10 }}>
+				<Content style={{ padding: 10 }}>
+					<Item>
+						<Input
+							returnKeyType={'next'}
+							onSubmitEditing={() => this.refs['password']._root.focus()}
+							autoCapitalize={"none"}
+							autoCorrect={false}
+							placeholder="Username"/>
+					</Item>
+					<Item>
+						<Input
+							ref="password"
+							returnKeyType={'next'}
+							onSubmitEditing={() => this.refs['passwordConfirm']._root.focus()}
+							secureTextEntry={true}
+							placeholder="Password"/>
+					</Item>
+					<Item>
+						<Input
+							ref="passwordConfirm"
+							returnKeyType={'go'}
+							secureTextEntry={true}
+							placeholder="Password confirm"/>
+					</Item>
+					<Button block style={{marginTop: 10}}>
 						<Text>Sign Up</Text>
 					</Button>
 				</Content>

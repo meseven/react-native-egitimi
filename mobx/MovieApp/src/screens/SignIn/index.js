@@ -5,35 +5,35 @@ import { Container, Header, Content, Form, Item, Input, Body, Title, Button, Tex
 
 export default class SignIn extends Component {
   render() {
-    return (
+		return (
 			<Container>
 				<Header>
 					<Body>
 						<Title>Sign In</Title>
 					</Body>
 				</Header>
-				<Content>
-					<Form>
-						<Item>
-							<Input
-								returnKeyType={'next'}
-								onSubmitEditing={() => this.refs['password']._root.focus()}
-								placeholder="Username" />
-						</Item>
-						<Item last>
-							<Input
-								ref="password"
-								secureTextEntry={true}
-								returnKeyType={'go'}
-								placeholder="Password" />
-						</Item>
-					</Form>
-					<Button full style={{ margin: 10 }}>
+				<Content style={{ padding: 10 }}>
+					<Item>
+						<Input
+							returnKeyType={'next'}
+							onSubmitEditing={() => this.refs['password']._root.focus()}
+							autoCapitalize={"none"}
+							autoCorrect={false}
+							placeholder="Username"/>
+					</Item>
+					<Item>
+						<Input
+							ref="password"
+							secureTextEntry={true}
+							returnKeyType={'go'}
+							placeholder="Password"/>
+					</Item>
+					<Button block style={{marginTop: 10}}>
 						<Text>Sign In</Text>
 					</Button>
 				</Content>
 			</Container>
-    );
+		);
   }
 }
 
