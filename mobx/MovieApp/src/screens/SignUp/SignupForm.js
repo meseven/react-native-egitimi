@@ -22,7 +22,7 @@ export default class SignupForm extends Component {
 		return (
 			<Formik
 				initialValues={{
-					email: '',
+					username: '',
 					password: '',
 					passwordConfirm: ''
 				}}
@@ -40,17 +40,16 @@ export default class SignupForm extends Component {
 						isSubmitting
 					}) => (
 					<Content style={{padding: 10}}>
-						<Item error={errors.email && touched.email}>
+						<Item error={errors.username && touched.username}>
 							<Input
-								onChangeText={handleChange('email')}
-								value={values.email}
-								placeholder='e-mail'
-								onBlur={() => setFieldTouched('email')}
+								onChangeText={handleChange('username')}
+								value={values.username}
+								placeholder='username'
+								onBlur={() => setFieldTouched('username')}
 								autoCapitalize={'none'}
-								keyboardType={'email-address'}
 							/>
 
-							{ (errors.email && touched.email) && <Text style={{color: 'red'}}>{errors.email}</Text>}
+							{ (errors.username && touched.username) && <Text style={{color: 'red'}}>{errors.username}</Text>}
 						</Item>
 
 						<Item error={errors.password && touched.password}>
