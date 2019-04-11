@@ -4,16 +4,21 @@ import { StyleSheet } from 'react-native';
 import {Formik} from "formik";
 import {Button, Input, Item, Text} from "native-base";
 
+// validations
+import validations from './validations';
+
 export default class SignInForm extends Component {
   render() {
     return (
       <React.Fragment>
 				<Formik
 					initialValues={{ username:'', password:'' }}
+					validationSchema={validations}
 				>
 					{({
 							values,
-							handleChange
+							handleChange,
+							errors
 						}) => (
 						<React.Fragment>
 							<Item>
@@ -25,6 +30,7 @@ export default class SignInForm extends Component {
 									value={values.username}
 									onChangeText={handleChange('username')}
 									placeholder="Username"/>
+								<Text style={styles.error}>{errors.username}</Text>
 							</Item>
 							<Item>
 								<Input
@@ -34,6 +40,7 @@ export default class SignInForm extends Component {
 									value={values.password}
 									onChangeText={handleChange('password')}
 									placeholder="Password"/>
+								<Text style={styles.error}>{errors.password}</Text>
 							</Item>
 						</React.Fragment>
 					)}
@@ -47,4 +54,8 @@ export default class SignInForm extends Component {
   }
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+	error:{ 
+		color: 'red'
+	}
+});
