@@ -20,7 +20,8 @@ export default class SignInForm extends Component {
 						handleChange,
 						errors,
 						touched,
-						setFieldTouched
+						setFieldTouched,
+						isValid
 					}) => (
 						<React.Fragment>
 							<Item>
@@ -46,13 +47,15 @@ export default class SignInForm extends Component {
 									placeholder="Password"/>
 								{ (errors.password && touched.password) && <Text style={styles.error}>{errors.password}</Text> }
 							</Item>
+							<Button
+								block
+								disabled={!isValid}
+								style={{marginTop: 10}}>
+								<Text>Sign In</Text>
+							</Button>
 						</React.Fragment>
 					)}
 				</Formik>
-
-				<Button block style={{marginTop: 10}}>
-					<Text>Sign In</Text>
-				</Button>
 			</React.Fragment>
     );
   }
