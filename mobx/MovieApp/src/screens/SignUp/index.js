@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
 import {Body, Button, Container, Content, Header, Input, Item, Title, Text} from "native-base";
 
-
+import SignUpForm from './SignUpForm';
 
 export default class SignUp extends Component {
 	render() {
@@ -14,32 +14,7 @@ export default class SignUp extends Component {
 					</Body>
 				</Header>
 				<Content style={{ padding: 10 }}>
-					<Item>
-						<Input
-							returnKeyType={'next'}
-							onSubmitEditing={() => this.refs['password']._root.focus()}
-							autoCapitalize={"none"}
-							autoCorrect={false}
-							placeholder="Username"/>
-					</Item>
-					<Item>
-						<Input
-							ref="password"
-							returnKeyType={'next'}
-							onSubmitEditing={() => this.refs['passwordConfirm']._root.focus()}
-							secureTextEntry={true}
-							placeholder="Password"/>
-					</Item>
-					<Item>
-						<Input
-							ref="passwordConfirm"
-							returnKeyType={'go'}
-							secureTextEntry={true}
-							placeholder="Password confirm"/>
-					</Item>
-					<Button block style={{marginTop: 10}}>
-						<Text>Sign Up</Text>
-					</Button>
+					<SignUpForm />
 				</Content>
 			</Container>
 		);
