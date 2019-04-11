@@ -42,10 +42,13 @@ export default class SignupForm extends Component {
 					<Content style={{padding: 10}}>
 						<Item error={errors.username && touched.username}>
 							<Input
+								returnKeyType={'next'}
+								onSubmitEditing={() => this.passwordRef._root.focus()}
 								onChangeText={handleChange('username')}
 								value={values.username}
 								placeholder='username'
 								onBlur={() => setFieldTouched('username')}
+								autoCorrect={false}
 								autoCapitalize={'none'}
 							/>
 
@@ -54,6 +57,9 @@ export default class SignupForm extends Component {
 
 						<Item error={errors.password && touched.password}>
 							<Input
+								ref={ref => this.passwordRef = ref}
+								returnKeyType={'next'}
+								onSubmitEditing={() => this.passwordConfirmRef._root.focus()}
 								onChangeText={handleChange('password')}
 								value={values.password}
 								placeholder='password'
@@ -67,6 +73,8 @@ export default class SignupForm extends Component {
 
 						<Item error={errors.passwordConfirm && touched.passwordConfirm}>
 							<Input
+								ref={ref => this.passwordConfirmRef = ref}
+								returnKeyType={'go'}
 								onChangeText={handleChange('passwordConfirm')}
 								value={values.passwordConfirm}
 								placeholder='password confirmation'
