@@ -1,16 +1,19 @@
-import React, { Component } from 'react';
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import React, {Component} from 'react';
+import {Body, Header, Title} from "native-base";
 
-export default class SignIn extends Component {
-  render() {
-    return (
-			<SafeAreaView>
-				<View>
-					<Text>signin</Text>
-				</View>
-			</SafeAreaView>
-    );
-  }
+import SigninForm from './SigninForm';
+
+export default class Signup extends Component {
+	render() {
+		return (
+			<React.Fragment>
+				<Header>
+					<Body>
+						<Title>Signin</Title>
+					</Body>
+				</Header>
+				<SigninForm />
+			</React.Fragment>
+		);
+	}
 }
-
-const styles = StyleSheet.create({});
