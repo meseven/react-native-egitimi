@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { StyleSheet } from 'react-native';
-import {Body, Button, Container, Content, Form, Header, Input, Item, Title, Text} from "native-base";
+import {Body, Button, Container, Content, Header, Input, Item, Title, Text} from "native-base";
+
+
 
 export default class SignUp extends Component {
 	render() {
