@@ -16,10 +16,12 @@ export default class SignInForm extends Component {
 					validationSchema={validations}
 				>
 					{({
-							values,
-							handleChange,
-							errors
-						}) => (
+						values,
+						handleChange,
+						errors,
+						touched,
+						setFieldTouched
+					}) => (
 						<React.Fragment>
 							<Item>
 								<Input
@@ -29,8 +31,9 @@ export default class SignInForm extends Component {
 									autoCorrect={false}
 									value={values.username}
 									onChangeText={handleChange('username')}
+									onBlur={() => setFieldTouched('username')}
 									placeholder="Username"/>
-								<Text style={styles.error}>{errors.username}</Text>
+								{ (errors.username && touched.username) && <Text style={styles.error}>{errors.username}</Text> }
 							</Item>
 							<Item>
 								<Input
@@ -39,8 +42,9 @@ export default class SignInForm extends Component {
 									returnKeyType={'go'}
 									value={values.password}
 									onChangeText={handleChange('password')}
+									onBlur={() => setFieldTouched('password')}
 									placeholder="Password"/>
-								<Text style={styles.error}>{errors.password}</Text>
+								{ (errors.password && touched.password) && <Text style={styles.error}>{errors.password}</Text> }
 							</Item>
 						</React.Fragment>
 					)}
