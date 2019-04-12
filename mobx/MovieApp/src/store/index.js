@@ -1,5 +1,5 @@
-import UserStore from './UserStore';
+import AuthStore from './AuthStore';
 
 export default {
-	UserStore
+	AuthStore
 }

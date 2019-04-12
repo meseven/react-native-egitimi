@@ -5,7 +5,7 @@ import SigninForm from './SigninForm';
 
 import {observer, inject} from 'mobx-react';
 
-@inject('UserStore')
+@inject('AuthStore')
 @observer
 export default class Signup extends Component {
 	render() {
