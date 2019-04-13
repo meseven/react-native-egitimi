@@ -10,7 +10,7 @@ export default class App extends Component {
   };
 
   componentDidMount() {
-    this.io = io.connect('http://192.168.1.35:3000', {
+    this.io = io.connect('http://localhost:3000', {
       timeout: 10000
     });
 
@@ -53,13 +53,10 @@ export default class App extends Component {
         <TouchableHighlight
           onPress={this.changeColor}
           style={styles.button}>
-          <React.Fragment>
-            <Text style={styles.color}>{this.state.color}</Text>
-            <View style={styles.countContainer}>
-              <Text style={styles.count}>{this.state.onlineCount}</Text>
-              <Text style={{ fontSize: 17 }}>Online now</Text>
-            </View>
-          </React.Fragment>
+          <View style={styles.countContainer}>
+            <Text style={styles.count}>{this.state.onlineCount}</Text>
+            <Text>Online now</Text>
+          </View>
         </TouchableHighlight>
       </View>
     );
@@ -71,10 +68,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   countContainer: {
-    alignItems: 'center',
-    backgroundColor: '#f1f1f1',
-    padding: 15,
-    borderRadius: 5
+    alignItems: 'center'
   },
   count: {
     fontSize: 32
@@ -83,9 +77,5 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  color: {
-    fontSize: 28,
-    padding: 10
   }
 });
