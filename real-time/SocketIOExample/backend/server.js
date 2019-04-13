@@ -12,6 +12,10 @@ io.on('connection', socket => {
 
 	io.emit('newUser', count);
 
+	socket.on('changeColor', color => {
+		socket.broadcast.emit('changeColor', color);
+	});
+
 	socket.on('disconnect', () => {
 		count--;
 		io.emit('disUser', count);
