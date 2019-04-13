@@ -68,7 +68,10 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   countContainer: {
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: '#f1f1f1',
+    padding: 15,
+    borderRadius: 5
   },
   count: {
     fontSize: 32
