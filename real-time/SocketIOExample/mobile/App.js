@@ -53,10 +53,13 @@ export default class App extends Component {
         <TouchableHighlight
           onPress={this.changeColor}
           style={styles.button}>
-          <View style={styles.countContainer}>
-            <Text style={styles.count}>{this.state.onlineCount}</Text>
-            <Text>Online now</Text>
-          </View>
+          <React.Fragment>
+            <Text style={styles.color}>{this.state.color}</Text>
+            <View style={styles.countContainer}>
+              <Text style={styles.count}>{this.state.onlineCount}</Text>
+              <Text>Online now</Text>
+            </View>
+          </React.Fragment>
         </TouchableHighlight>
       </View>
     );
@@ -80,5 +83,9 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  color: {
+    fontSize: 28,
+    padding: 10
   }
 });
