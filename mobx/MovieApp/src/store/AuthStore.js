@@ -1,25 +1,7 @@
-import {observable, action} from 'mobx';
-import axios from 'axios';
-
-import {API_BASE} from '../constants';
+import {observable} from 'mobx';
 
 class AuthStore{
-	@action register = async ({ username, password }, bag) => {
-		try{
-			const { data } = await axios.post(`${API_BASE}/register`, { username, password })
-
-			if (data.hasOwnProperty('errors')) {
-			  bag.setErrors(data.errors)
-			}else{
-				alert('welcome')
-			}
-
-			bag.setSubmitting(false);
-		}catch (e) {
-			console.log(e);
-			bag.setSubmitting(false);
-		}
-	}
+	@observable username = "mseven";
 }
 
 export default new AuthStore();

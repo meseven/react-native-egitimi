@@ -3,25 +3,19 @@ import React, { Component } from 'react';
 import {Button, Content, Input, Item, Spinner, Text} from "native-base";
 import {Formik} from "formik";
 
-import {observer,inject} from 'mobx-react';
-
-
 //import api from '../../api/api';
 import validations from './validations';
 
-@inject('AuthStore')
-@observer
 export default class SignupForm extends Component {
 	_handleSubmit = async (values, bag) => {
-		this.props.AuthStore.register(values, bag);
-		/*try {
+		try {
 			//await api(values);
 			bag.setSubmitting(false);
 			alert('welcome')
 		}catch (e) {
 			bag.setSubmitting(false);
 			bag.setErrors(e)
-		}*/
+		}
 	};
 
 	render() {
