@@ -12,7 +12,7 @@ export default class Signup extends Component {
 						<Title>Signup</Title>
 					</Body>
 				</Header>
-				<SignupForm />
+				<SignupForm navigation={this.props.navigation} />
 			</React.Fragment>
 		);
 	}
