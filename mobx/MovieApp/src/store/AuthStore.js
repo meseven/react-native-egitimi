@@ -9,9 +9,11 @@ configure({
 class AuthStore{
 	@observable token = null;
 
-	@action login = async ({ username, password }) => {
+	@action login = async ({ username, password }, bag) => {
 		try{
 			const { data } = await axios.post(`${API_BASE}/authenticate`, { username, password })
+
+			bag.setSubmitting(false);
 
 			if (!data.status) {
 			  alert(data.message);

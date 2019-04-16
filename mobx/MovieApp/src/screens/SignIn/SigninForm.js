@@ -12,13 +12,7 @@ import {observer, inject} from 'mobx-react';
 @observer
 export default class SigninForm extends Component {
 	_handleSubmit = async (values, bag) => {
-		try {
-			this.props.AuthStore.login(values);
-			bag.setSubmitting(false);
-		}catch (e) {
-			bag.setSubmitting(false);
-			bag.setErrors(e)
-		}
+		this.props.AuthStore.login(values, bag);
 	};
 
 	render() {
