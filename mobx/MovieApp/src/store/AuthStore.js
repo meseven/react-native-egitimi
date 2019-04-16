@@ -12,9 +12,15 @@ class AuthStore{
 	@action login = async ({ username, password }) => {
 		try{
 			const { data } = await axios.post(`${API_BASE}/authenticate`, { username, password })
-			console.log(data);
-		}catch (e) {
 
+			if (!data.status) {
+			  alert(data.message);
+				return false;
+			}
+
+			this.token = data.token;
+		}catch (e) {
+			alert('Network error!')
 		}
 	}
 }
