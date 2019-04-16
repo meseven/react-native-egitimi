@@ -10,7 +10,7 @@ class AuthStore{
 	@action async saveToken(token){
 		try{
 			await AsyncStorage.setItem('token', token);
-			this.setupAuth();
+			await this.setupAuth();
 		}catch (e) {
 			console.log(e);
 		}
