@@ -10,7 +10,26 @@ class AuthStore{
 	@action async saveToken(token){
 		try{
 			await AsyncStorage.setItem('token', token);
-			console.log(NavigationService);
+			this.setupAuth();
+		}catch (e) {
+			console.log(e);
+		}
+	}
+
+	@action async setupAuth(){
+		await this.getToken();
+	}
+
+	@action async getToken(){
+		try{
+			const token = await AsyncStorage.getItem('token');
+			if (!token) {
+			  NavigationService.navigate('Auth')
+				return false;
+			}
+
+			this.token = token;
+			NavigationService.navigate('App');
 		}catch (e) {
 			console.log(e);
 		}
