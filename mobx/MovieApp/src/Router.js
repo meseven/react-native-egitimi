@@ -30,7 +30,7 @@ const AuthStack = createBottomTabNavigator(
 		}
 	},
 	{
-		initialRouteName: 'SignUp',
+		initialRouteName: 'SignIn',
 		tabBarOptions: {
 			activeTintColor: '#fff',
 			inactiveTintColor: '#586589',
