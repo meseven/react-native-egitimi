@@ -16,6 +16,16 @@ class AuthStore{
 		}
 	}
 
+	@action async removeToken(){
+		try{
+			await AsyncStorage.removeItem('token');
+			this.token = null;
+			await this.setupAuth();
+		}catch (e) {
+			console.log(e);
+		}
+	}
+
 	@action async setupAuth(){
 		await this.getToken();
 	}
@@ -24,7 +34,7 @@ class AuthStore{
 		try{
 			const token = await AsyncStorage.getItem('token');
 			if (!token) {
-			  NavigationService.navigate('Auth')
+			  NavigationService.navigate('Auth');
 				return false;
 			}
 
