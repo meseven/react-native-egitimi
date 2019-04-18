@@ -25,6 +25,7 @@ export default class Home extends Component {
 				<List>
 					<FlatList
 						data={MovieStore.movies}
+						keyExtractor={item => item._id}
 						renderItem={({item}) => <MovieListItem item={item}/>}
 					/>
 				</List>
