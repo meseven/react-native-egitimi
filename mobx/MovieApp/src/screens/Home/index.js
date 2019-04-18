@@ -5,18 +5,22 @@ import LogoutButton from '../../components/LogoutButton';
 import MovieListItem from './MovieListItem';
 
 import { Content, List } from 'native-base';
+import {observer,inject} from 'mobx-react';
 
+@inject('MovieStore')
+@observer
 export default class Home extends Component {
 	static navigationOptions = {
 		headerLeft: LogoutButton
 	};
 
   render() {
-		return (
+  	const { MovieStore } = this.props;
+ 		return (
 			<Content>
 				<List>
 					<FlatList
-						data={[{key: 'a'}, {key: 'b'}]}
+						data={MovieStore.movies}
 						renderItem={({item}) => <MovieListItem item={item}/>}
 					/>
 				</List>
