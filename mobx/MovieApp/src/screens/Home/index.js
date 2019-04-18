@@ -14,7 +14,11 @@ export default class Home extends Component {
 		headerLeft: LogoutButton
 	};
 
-  render() {
+	componentDidMount() {
+		this.props.MovieStore.getMovies()
+	}
+
+	render() {
   	const { MovieStore } = this.props;
  		return (
 			<Content>
