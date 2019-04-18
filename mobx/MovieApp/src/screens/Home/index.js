@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 
 import LogoutButton from '../../components/LogoutButton';
+import ListItem from './ListItem';
 
 export default class Home extends Component {
 	static navigationOptions = {
@@ -13,7 +14,7 @@ export default class Home extends Component {
       <View>
 				<FlatList
 					data={[{key: 'a'}, {key: 'b'}]}
-					renderItem={({item}) => <Text>{item.key}</Text>}
+					renderItem={({item}) => <ListItem item={item} />}
 				/>
 			</View>
     );
