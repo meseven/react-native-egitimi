@@ -1,8 +1,9 @@
 import React from 'react';
 import {Text} from 'react-native';
 
-const ListItem = ({item}) => (
+const MovieListItem = ({ item }) => (
 	<Text>{item.key}</Text>
 );
 
-export default ListItem;
+export default MovieListItem;
+
