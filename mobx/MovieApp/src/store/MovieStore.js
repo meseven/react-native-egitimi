@@ -11,9 +11,10 @@ import AuthStore from './AuthStore';
 
 class MovieStore{
 	@observable movies = [];
-
+	@observable loading = false;
 
 	@action async getMovies(){
+		this.loading = true;
 		try{
 			const {data} = await axios.get(`${API_BASE}/api/movies`, {
 				headers: {
@@ -22,9 +23,11 @@ class MovieStore{
 			});
 
 			runInAction(() => {
-				this.movies = data
+				this.movies = data;
+				this.loading = false;
 			})
 		}catch (e) {
+			this.loading = false;
 			console.log(e);
 		}
 	}

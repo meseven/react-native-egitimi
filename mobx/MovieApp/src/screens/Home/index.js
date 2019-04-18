@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, FlatList } from 'react-native';
 import LogoutButton from '../../components/LogoutButton';
 import MovieListItem from './MovieListItem';
 
-import { Content, List } from 'native-base';
+import { Content, List, Spinner } from 'native-base';
 import {observer,inject} from 'mobx-react';
 
 @inject('MovieStore')
@@ -22,6 +22,7 @@ export default class Home extends Component {
   	const { MovieStore } = this.props;
  		return (
 			<Content>
+				{ MovieStore.loading && <Spinner size={"small"} color={"#333"} />}
 				<List>
 					<FlatList
 						data={MovieStore.movies}
