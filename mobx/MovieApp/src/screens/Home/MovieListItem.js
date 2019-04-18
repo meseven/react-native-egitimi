@@ -1,8 +1,16 @@
 import React from 'react';
-import {Text} from 'react-native';
+
+import { ListItem, Text, Left, Right, Icon } from 'native-base';
 
 const MovieListItem = ({ item }) => (
-	<Text>{item.key}</Text>
+	<ListItem noIndent onPress={() => {}}>
+		<Left>
+			<Text>{item.key}</Text>
+		</Left>
+		<Right>
+			<Icon name="arrow-forward" />
+		</Right>
+	</ListItem>
 );
 
 export default MovieListItem;
