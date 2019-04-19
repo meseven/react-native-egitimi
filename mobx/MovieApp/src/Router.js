@@ -16,6 +16,7 @@ import AuthLoading from './screens/AuthLoading';
 // app stack
 import Home from './screens/Home';
 import Detail from './screens/Detail';
+import NewMovie from './screens/NewMovie';
 
 // auth stack
 import SignIn from './screens/SignIn';
@@ -34,6 +35,16 @@ const AppStack = createStackNavigator({
 			title: 'Detail',
 		}
 	}
+});
+
+const AppStackWithModal = createStackNavigator({
+	AppStack,
+	NewMovie:{
+		screen: NewMovie
+	}
+}, {
+	headerMode: "none",
+	mode: 'modal'
 });
 
 const AuthStack = createBottomTabNavigator(
@@ -70,7 +81,7 @@ const SwitchNavigator = createSwitchNavigator(
 		AuthLoading: {
 			screen: AuthLoading
 		},
-		App: AppStack,
+		App: AppStackWithModal,
 		Auth: AuthStack,
 	},
 	{
