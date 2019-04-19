@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet} from 'react-native';
+
+import {Content, H1, Text} from 'native-base';
 
 export default class Detail extends Component {
 	constructor(props) {
@@ -9,10 +11,10 @@ export default class Detail extends Component {
 
 	render() {
     return (
-      <View>
-				<Text>{this.item.title}</Text>
-				<Text>{this.item.imdb_score}</Text>
-			</View>
+      <Content style={{ padding:10 }}>
+				<H1>{this.item.title}</H1>
+				<Text>imdb score: {this.item.imdb_score}</Text>
+			</Content>
     );
   }
 }
