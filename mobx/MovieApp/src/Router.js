@@ -15,6 +15,7 @@ import AuthLoading from './screens/AuthLoading';
 
 // app stack
 import Home from './screens/Home';
+import Detail from './screens/Detail';
 
 // auth stack
 import SignIn from './screens/SignIn';
@@ -25,6 +26,12 @@ const AppStack = createStackNavigator({
 		screen: Home,
 		navigationOptions: {
 			title: 'Home',
+		}
+	},
+	Detail: {
+		screen: Detail,
+		navigationOptions: {
+			title: 'Detail',
 		}
 	}
 });

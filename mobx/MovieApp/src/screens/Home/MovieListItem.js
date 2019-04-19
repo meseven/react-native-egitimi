@@ -2,8 +2,10 @@ import React from 'react';
 
 import { ListItem, Text, Left, Right, Icon } from 'native-base';
 
+import NavigationService from '../../NavigationService';
+
 const MovieListItem = ({ item }) => (
-	<ListItem noIndent onPress={() => {}}>
+	<ListItem noIndent onPress={() => NavigationService.navigate('Detail')}>
 		<Left>
 			<Text>{item.title}</Text>
 		</Left>
