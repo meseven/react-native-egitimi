@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, FlatList } from 'react-native';
 
 import LogoutButton from '../../components/LogoutButton';
-import NewButton from '../../components/NewButton';
 import MovieListItem from './MovieListItem';
 
 import { Content, List, Spinner } from 'native-base';
@@ -12,8 +11,7 @@ import {observer,inject} from 'mobx-react';
 @observer
 export default class Home extends Component {
 	static navigationOptions = {
-		headerLeft: <LogoutButton />,
-		headerRight: <NewButton />
+		headerLeft: LogoutButton,
 	};
 
 	componentDidMount() {
