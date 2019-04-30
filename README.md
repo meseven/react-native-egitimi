@@ -68,17 +68,7 @@ Chat yazılımları ve multiplayer oyunlarda çokça tercih edilen bir teknoloji
 
 Kurs üzerinde bir Node.JS backend'i oluşturup socket.io'yu kullanıyoruz. Aşağıda görmüş olduğunuz çalışmayı hazırlıyoruz.
 
-<video 
-onclick="this.play()"
-width="100%"  
-controls 
-poster="https://mehmetseven.net/content/images/2019/04/socketio-min.jpg"
-preload="none">
-
-   <source
-src="https://mehmetseven.net/content/images/socketio-rn.mp4" type="video/mp4">
-   Your browser does not support the video tag.
-</video>
+[![Foo](https://mehmetseven.net/content/images/2019/04/socketio-min.jpg)](https://mehmetseven.net/content/images/socketio-rn.mp4)
 
 ## Yeni Eklenecek Bölümler
 
