@@ -1,0 +1,33 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'PushNotificationApp' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+  # Pods for PushNotificationApp
+
+  # target 'PushNotificationApp-tvOSTests' do
+  #   inherit! :search_paths
+  #   # Pods for testing
+  # end
+
+  # target 'PushNotificationAppTests' do
+  #   inherit! :search_paths
+  #   # Pods for testing
+  # end
+
+end
+
+# target 'PushNotificationApp-tvOS' do
+#   # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+#   # use_frameworks!
+
+#   # Pods for PushNotificationApp-tvOS
+
+#   target 'PushNotificationApp-tvOSTests' do
+#     inherit! :search_paths
+#     # Pods for testing
+#   end
+
+# end
