@@ -1,8 +1,9 @@
 # React Native Eğitimi
+![](https://mehmetseven.net/content/images/2019/04/mehmet-seven-react-native.jpg)
 
 Node.JS, React, GraphQL ve şimdi de React Native.Evet, "Sıfırdan Her Yönüyle" yolculuğunun dördüncü adımı olan React Native kursu artık hazır.
 
-[Kursun Github Reposu](https://github.com/meseven/react-native-egitimi)
+[Kursa Git](http://bit.ly/2GSEhXx)
 
 ## Temel Dersler
 
