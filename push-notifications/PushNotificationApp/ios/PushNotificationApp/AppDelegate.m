@@ -14,7 +14,6 @@
 #import <UserNotifications/UserNotifications.h>
 
 
-@import Firebase;
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -35,7 +34,6 @@
   // define UNUserNotificationCenter
   UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
   center.delegate = self;
-  [FIRApp configure];
   return YES;
 }
 

@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, Text, Platform, FlatList, Image, TouchableOpacity, TextInput, ActivityIndicator} from 'react-native';
+import {StyleSheet, View, Text, FlatList, Image, TouchableOpacity, TextInput, ActivityIndicator} from 'react-native';
 import axios from 'axios';
-
-const isIos = Platform.OS === 'ios';
 
 export default class FlatListExample extends Component {
 	state = {
@@ -13,12 +11,6 @@ export default class FlatListExample extends Component {
 		loading: true,
 		refreshing: false
 	};
-
-	constructor(props) {
-		super(props);
-		this.duringMomentum = false;
-	}
-
 
 	componentDidMount() {
 		this.getContacts();
@@ -51,7 +43,7 @@ export default class FlatListExample extends Component {
 			}, () => {
 				this.getContacts();
 			});
-			this.duringMomentum = false;
+			this.duringMomentum = true;
 		}
 	};
 
@@ -95,8 +87,6 @@ export default class FlatListExample extends Component {
 		return (
 			<View style={styles.searchContainer}>
 				<TextInput
-					onFocus={() => this.duringMomentum = true}
-					onBlur={() => this.duringMomentum = false}
 					onChangeText={text => {
 						this.setState({
 							text,
@@ -132,7 +122,8 @@ export default class FlatListExample extends Component {
 				data={this.state.contacts}
 
 				onEndReached={this.loadMore}
-				onEndReachedThreshold={isIos ? 0 : .2}
+				onEndReachedThreshold={0}
+				onMomentumScrollBegin={() => { this.duringMomentum = false }}
 
 				refreshing={this.state.refreshing}
 				onRefresh={this.onRefresh}

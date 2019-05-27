@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {StyleSheet, Text, View, Button, PushNotificationIOS} from 'react-native';
 
 import PushNotification from 'react-native-push-notification';
-import firebase from 'react-native-firebase';
 
 
 export default class App extends Component{
@@ -25,21 +24,6 @@ export default class App extends Component{
     );
   }
 }
-
-const messaging = firebase.messaging();
-messaging
-  .hasPermission()
-  .then(enabled => {
-    if (enabled) {
-      messaging.getToken()
-        .then(token => console.log(token))
-        .catch(err => console.log(err))
-    }else{
-      messaging.requestPermission()
-        .then(() => {})
-        .catch(() => {})
-    }
-  });
 
 PushNotification.configure({
 
