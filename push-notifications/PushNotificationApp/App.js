@@ -1,15 +1,11 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, Button, TextInput} from 'react-native';
+import {StyleSheet, Text, View, Button, PushNotificationIOS} from 'react-native';
 
 import PushNotification from 'react-native-push-notification';
 import firebase from 'react-native-firebase';
 
 
 export default class App extends Component{
-  state = {
-    token: null
-  };
-
   getNotification(){
     PushNotification.localNotification({
       title: "My Notification Title", // (optional)
@@ -24,9 +20,6 @@ export default class App extends Component{
         <Button
           title={"Get Notification"}
           onPress={this.getNotification}
-        />
-        <TextInput
-          value={this.state.token}
         />
       </View>
     );
