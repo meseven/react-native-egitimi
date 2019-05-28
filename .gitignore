@@ -6,6 +6,8 @@ yarn-debug.log*
 yarn-error.log*
 
 .idea/
+push-notifications/PushNotificationApp/android/app/google-services.json
+
 
 # Runtime data
 pids
