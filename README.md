@@ -1,9 +1,11 @@
 # React Native Eğitimi
-![](https://mehmetseven.net/content/images/2019/04/mehmet-seven-react-native.jpg)
+
+[![](https://mehmetseven.net/content/images/2019/04/mehmet-seven-react-native.jpg))](http://bit.ly/rjsnative)
 
 Node.JS, React, GraphQL ve şimdi de React Native.Evet, "Sıfırdan Her Yönüyle" yolculuğunun dördüncü adımı olan React Native kursu artık hazır.
 
-[Kursa Git](http://bit.ly/2GSEhXx)
+[Kursa Git](http://bit.ly/rjsnative)
+**Kupon Kodu:** RNJS34M
 
 ## Temel Dersler
 
@@ -75,6 +77,8 @@ Kurs üzerinde bir Node.JS backend'i oluşturup socket.io'yu kullanıyoruz. Aşa
 
 - Styled Components
 - Background Tasks
-- Push Notifications
 - GraphQL & Apollo
 - Uygulamayı Yayınlamak.
+
+
+[Kursa Git](http://bit.ly/rjsnative)
