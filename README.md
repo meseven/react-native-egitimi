@@ -1,6 +1,6 @@
 # React Native Eğitimi
 
-[![](https://mehmetseven.net/content/images/2019/04/mehmet-seven-react-native.jpg))](http://bit.ly/rjsnative)
+[![](https://mehmetseven.net/content/images/2019/04/mehmet-seven-react-native.jpg)](http://bit.ly/rjsnative)
 
 Node.JS, React, GraphQL ve şimdi de React Native.Evet, "Sıfırdan Her Yönüyle" yolculuğunun dördüncü adımı olan React Native kursu artık hazır.
 
