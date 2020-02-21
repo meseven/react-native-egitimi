@@ -1,35 +1,22 @@
-import React, {Component} from 'react';
-import {StyleSheet, Text, View, ScrollView, KeyboardAvoidingView, TouchableOpacity} from 'react-native';
-import LoginForm from './LoginForm';
+import React, { Component } from "react";
+import {
+	StyleSheet,
+	Text,
+	View,
+	ScrollView,
+	KeyboardAvoidingView,
+	TouchableOpacity
+} from "react-native";
+import LoginForm from "./LoginForm";
+
+import FlatListExample from "../components/FlatListExample";
 
 export default class Login extends Component {
 	render() {
 		return (
 			<View style={styles.container}>
-				<View style={styles.headBackground} />
-
-				<KeyboardAvoidingView behavior={"position"}>
-					<View>
-						<Text style={styles.logo}>UDAC</Text>
-						<Text style={styles.logoDescription}>Property & Tax Survey</Text>
-					</View>
-					<ScrollView>
-						<View style={styles.loginArea}>
-							<Text style={styles.loginAreaTitle}>Property Tax Server</Text>
-							<Text style={styles.loginAreaDescription}>
-								Unique Door No Easily Fill Your Entire Property Tax Using App
-							</Text>
-
-							<LoginForm />
-						</View>
-					</ScrollView>
-					<View style={styles.signUpArea}>
-						<Text style={styles.signUpDescription}>Don`t have an account?</Text>
-						<TouchableOpacity>
-							<Text style={styles.signUpText}>Sign Up</Text>
-						</TouchableOpacity>
-					</View>
-				</KeyboardAvoidingView>
+				<Text>asd</Text>
+				<FlatListExample />
 			</View>
 		);
 	}
@@ -38,60 +25,60 @@ export default class Login extends Component {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-		backgroundColor: '#F5FCFF',
+		backgroundColor: "#F5FCFF",
 		paddingVertical: 80
 	},
-	headBackground: {
-		position: 'absolute',
+	headBackground: {
+		position: "absolute",
 		top: 0,
 		left: 0,
 		height: 250,
-		width: '100%',
-		backgroundColor: '#1572de'
+		width: "100%",
+		backgroundColor: "#1572de"
 	},
 	logo: {
-		textAlign: 'center',
+		textAlign: "center",
 		fontSize: 40,
-		fontWeight: 'bold',
-		color: '#f2f2f2'
+		fontWeight: "bold",
+		color: "#f2f2f2"
 	},
 	logoDescription: {
-		textAlign: 'center',
-		color: '#f2f2f2'
+		textAlign: "center",
+		color: "#f2f2f2"
 	},
-	loginArea: {
+	loginArea: {
 		marginHorizontal: 40,
 		marginVertical: 40,
-		backgroundColor: '#fff',
+		backgroundColor: "#fff",
 		padding: 20,
 		borderRadius: 5,
 
-		shadowColor: 'black',
-		shadowOpacity: .2,
+		shadowColor: "black",
+		shadowOpacity: 0.2,
 		shadowRadius: 3,
 		shadowOffset: {
-			width:0,
+			width: 0,
 			height: 2
 		},
 		elevation: 4
 	},
 	loginAreaTitle: {
 		fontSize: 20,
-		textAlign: 'center'
+		textAlign: "center"
 	},
 	loginAreaDescription: {
 		fontSize: 11,
-		color: '#7e868f',
+		color: "#7e868f",
 		marginVertical: 10,
-		textAlign: 'center'
+		textAlign: "center"
 	},
-	signUpArea: {
-		alignItems: 'center'
+	signUpArea: {
+		alignItems: "center"
 	},
 	signUpDescription: {
-		color: '#999'
+		color: "#999"
 	},
-	signUpText: {
-		color: '#666'
+	signUpText: {
+		color: "#666"
 	}
 });

@@ -7,15 +7,17 @@
     "test": "jest"
   },
   "dependencies": {
+    "axios": "^0.19.0",
     "react": "16.6.3",
-    "react-native": "0.58.5"
+    "react-native": "^0.61.5"
   },
   "devDependencies": {
     "babel-core": "^7.0.0-bridge.0",
     "babel-jest": "24.1.0",
     "jest": "24.1.0",
     "metro-react-native-babel-preset": "0.52.0",
-    "react-test-renderer": "16.6.3"
+    "react-test-renderer": "16.6.3",
+    "webpack-cli": "^3.3.10"
   },
   "jest": {
     "preset": "react-native"
