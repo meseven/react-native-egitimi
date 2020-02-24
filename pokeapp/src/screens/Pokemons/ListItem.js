@@ -22,6 +22,8 @@ const styles = StyleSheet.create({
 		flexDirection: 'row',
 		alignItems: 'center',
 		padding: 10,
+		borderBottomWidth: 1,
+		borderColor: '#f1f1f1',
 	},
 	image: {
 		width: 100,
@@ -29,7 +31,7 @@ const styles = StyleSheet.create({
 	},
 	name: {
 		fontSize: 24,
-		marginLeft: 10,
+		marginLeft: 15,
 	},
 });
 

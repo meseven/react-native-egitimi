@@ -10,7 +10,14 @@ const HomeStack = createStackNavigator();
 
 export default function App() {
 	return (
-		<NavigationContainer>
+		<NavigationContainer
+			theme={{
+				colors: {
+					background: '#fff',
+					card: '#ff5722',
+					text: '#fff',
+				},
+			}}>
 			<HomeStack.Navigator>
 				<HomeStack.Screen name="Pokemons" component={Pokemons} />
 			</HomeStack.Navigator>
