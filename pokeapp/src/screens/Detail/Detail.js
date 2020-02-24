@@ -4,16 +4,7 @@ import {ScrollView, Text, Image, StyleSheet} from 'react-native';
 import Loading from '../../components/Loading';
 
 import {useQuery} from '@apollo/react-hooks';
-import {gql} from 'apollo-boost';
-
-const POKEMON_QUERY = gql`
-	query Pokemon($id: String) {
-		pokemon(id: $id) {
-			id
-			name
-		}
-	}
-`;
+import {POKEMON_QUERY} from './queries';
 
 const Detail = ({route}) => {
 	const {id} = route.params;

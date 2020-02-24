@@ -5,16 +5,8 @@ import ListItem from './ListItem';
 import Loading from '../../components/Loading';
 
 import {useQuery} from '@apollo/react-hooks';
-import {gql} from 'apollo-boost';
 
-const POKEMONS_QUERY = gql`
-	{
-		pokemons(first: 20) {
-			id
-			name
-		}
-	}
-`;
+import {POKEMONS_QUERY} from './queries';
 
 const Pokemons = () => {
 	const {error, loading, data} = useQuery(POKEMONS_QUERY);
