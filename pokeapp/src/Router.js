@@ -22,7 +22,9 @@ export default function App() {
 			}}>
 			<HomeStack.Navigator>
 				<HomeStack.Screen name="Pokemons" component={Pokemons} />
-				<HomeStack.Screen name="Detail" component={Detail} />
+				<HomeStack.Screen name="Detail" component={Detail} options={({route}) => ({
+					title: route.params.name
+				})} />
 			</HomeStack.Navigator>
 		</NavigationContainer>
 	);

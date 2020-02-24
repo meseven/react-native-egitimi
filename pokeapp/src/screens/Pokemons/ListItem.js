@@ -9,7 +9,12 @@ const ListItem = ({item}) => {
 	return (
 		<TouchableOpacity
 			style={styles.container}
-			onPress={() => navigation.push('Detail')}>
+			onPress={() =>
+				navigation.push('Detail', {
+					id: item.id,
+					name: item.name,
+				})
+			}>
 			<Image
 				style={styles.image}
 				resizeMode="contain"
