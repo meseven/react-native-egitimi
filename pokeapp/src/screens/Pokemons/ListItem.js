@@ -1,9 +1,15 @@
 import React from 'react';
-import {View, Text, Image, StyleSheet} from 'react-native';
+import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
+
+import {useNavigation} from '@react-navigation/native';
 
 const ListItem = ({item}) => {
+	const navigation = useNavigation();
+
 	return (
-		<View style={styles.container}>
+		<TouchableOpacity
+			style={styles.container}
+			onPress={() => navigation.push('Detail')}>
 			<Image
 				style={styles.image}
 				resizeMode="contain"
@@ -12,7 +18,7 @@ const ListItem = ({item}) => {
 				}}
 			/>
 			<Text style={styles.name}>{item.name}</Text>
-		</View>
+		</TouchableOpacity>
 	);
 };
 

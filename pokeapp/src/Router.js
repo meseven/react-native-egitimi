@@ -5,6 +5,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 //screens
 import Pokemons from './screens/Pokemons/Pokemons';
+import Detail from './screens/Detail/Detail';
 
 const HomeStack = createStackNavigator();
 
@@ -16,10 +17,12 @@ export default function App() {
 					background: '#fff',
 					card: '#ff5722',
 					text: '#fff',
+					primary: '#fff',
 				},
 			}}>
 			<HomeStack.Navigator>
 				<HomeStack.Screen name="Pokemons" component={Pokemons} />
+				<HomeStack.Screen name="Detail" component={Detail} />
 			</HomeStack.Navigator>
 		</NavigationContainer>
 	);
