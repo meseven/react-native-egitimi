@@ -1,5 +1,7 @@
 import React from 'react';
-import {View, Text, FlatList} from 'react-native';
+import {Text, FlatList} from 'react-native';
+
+import ListItem from './ListItem';
 
 import {useQuery} from '@apollo/react-hooks';
 import {gql} from 'apollo-boost';
@@ -24,12 +26,10 @@ const Pokemons = () => {
 		return <Text>Error.</Text>;
 	}
 
-	console.log(data);
-
 	return (
 		<FlatList
 			data={data.pokemons}
-			renderItem={({item}) => <Text>{item.name}</Text>}
+			renderItem={({item}) => <ListItem item={item} />}
 			keyExtractor={item => item.id}
 		/>
 	);
