@@ -19,7 +19,7 @@ const ListItem = ({item}) => {
 				style={styles.image}
 				resizeMode="contain"
 				source={{
-					uri: `https://img.pokemondb.net/artwork/${item.name.toLowerCase()}.jpg`,
+					uri: item.image,
 				}}
 			/>
 			<Text style={styles.name}>{item.name}</Text>

@@ -2,6 +2,7 @@ import React from 'react';
 import {ScrollView, Text, Image, StyleSheet} from 'react-native';
 
 import Loading from '../../components/Loading';
+import Label from '../../components/Label';
 
 import {useQuery} from '@apollo/react-hooks';
 import {POKEMON_QUERY} from './queries';
@@ -23,7 +24,7 @@ const Detail = ({route}) => {
 		return <Text>Error.</Text>;
 	}
 
-	const {name} = data.pokemon;
+	const {name, image, types, weaknesses} = data.pokemon;
 
 	return (
 		<ScrollView>
@@ -31,10 +32,12 @@ const Detail = ({route}) => {
 				style={styles.image}
 				resizeMode="contain"
 				source={{
-					uri: `https://img.pokemondb.net/artwork/${name.toLowerCase()}.jpg`,
+					uri: image,
 				}}
 			/>
 			<Text style={styles.name}>{name}</Text>
+			<Label title="Types" data={types} />
+			<Label title="Weaknesses" data={weaknesses} />
 		</ScrollView>
 	);
 };

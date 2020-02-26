@@ -5,6 +5,9 @@ export const POKEMON_QUERY = gql`
 		pokemon(id: $id) {
 			id
 			name
+			image
+			types
+			weaknesses
 		}
 	}
 `;
