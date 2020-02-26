@@ -3,6 +3,7 @@ import {ScrollView, Text, Image, StyleSheet} from 'react-native';
 
 import Loading from '../../components/Loading';
 import Label from '../../components/Label';
+import Evolutions from '../../components/Evolutions';
 
 import {useQuery} from '@apollo/react-hooks';
 import {POKEMON_QUERY} from './queries';
@@ -24,7 +25,7 @@ const Detail = ({route}) => {
 		return <Text>Error.</Text>;
 	}
 
-	const {name, image, types, weaknesses} = data.pokemon;
+	const {name, image, types, weaknesses, evolutions} = data.pokemon;
 
 	return (
 		<ScrollView>
@@ -36,8 +37,10 @@ const Detail = ({route}) => {
 				}}
 			/>
 			<Text style={styles.name}>{name}</Text>
+
 			<Label title="Types" data={types} />
 			<Label title="Weaknesses" data={weaknesses} />
+			<Evolutions data={evolutions} />
 		</ScrollView>
 	);
 };

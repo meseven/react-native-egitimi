@@ -8,6 +8,11 @@ export const POKEMON_QUERY = gql`
 			image
 			types
 			weaknesses
+			evolutions {
+				id
+				name
+				image
+			}
 		}
 	}
 `;
