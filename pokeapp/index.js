@@ -9,7 +9,7 @@ import {name as appName} from './app.json';
 
 const client = new ApolloClient({
 	link: new HttpLink({
-		uri: 'https://graphql-pokemon.now.sh/',
+		uri: 'https://graphql-pokemon2.vercel.app/',
 	}),
 	cache: new InMemoryCache(),
 });
