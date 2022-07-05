@@ -1,11 +1,13 @@
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 // screens
 import HomeScreen from "../screens/Home";
 import UsersScreen from "../screens/Users";
 import UserDetail from "../screens/UserDetail";
 import { Button } from "react-native";
+import DrawerButton from "../components/DrawerButton";
 
 // Home Stack
 const HomeStack = createNativeStackNavigator();
@@ -13,7 +15,13 @@ const HomeStack = createNativeStackNavigator();
 function HomeStackNavigator() {
 	return (
 		<HomeStack.Navigator>
-			<HomeStack.Screen name="Home" component={HomeScreen} />
+			<HomeStack.Screen
+				name="Home"
+				component={HomeScreen}
+				options={() => ({
+					headerLeft: () => <DrawerButton />,
+				})}
+			/>
 		</HomeStack.Navigator>
 	);
 }
