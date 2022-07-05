@@ -20,6 +20,7 @@ const DrawerNavigator = () => {
 				},
 			}}
 			// drawerContent={() => <DrawerContent />}
+			initialRouteName="UsersDrawer"
 		>
 			<Drawer.Screen
 				name="HomeDrawer"

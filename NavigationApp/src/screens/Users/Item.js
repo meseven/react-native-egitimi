@@ -2,13 +2,15 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 
-const Item = ({ item }) => {
+const Item = ({ name, id }) => {
 	const navigation = useNavigation();
 
 	return (
 		<View style={styles.container}>
-			<TouchableOpacity onPress={() => navigation.navigate("UserDetail", item)}>
-				<Text style={styles.text}>{item.name}</Text>
+			<TouchableOpacity
+				onPress={() => navigation.navigate("UserDetail", { id })}
+			>
+				<Text style={styles.text}>{name}</Text>
 			</TouchableOpacity>
 		</View>
 	);
