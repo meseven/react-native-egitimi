@@ -1,16 +1,16 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import { View, Text, StyleSheet, Button } from "react-native";
-import axios from "axios";
 import Loading from "../../components/Loading";
 import Error from "../../components/Error";
+import useFetch from "../../hooks/useFetch";
 
 const UserDetail = ({ route, navigation }) => {
 	const { id } = route.params;
-
 	const [userId, setUserId] = useState(id);
-	const [user, setUser] = useState(null);
-	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState(null);
+
+	const { data, loading, error } = useFetch(
+		`https://jsonplaceholder.typicode.com/users/${userId}`
+	);
 
 	useLayoutEffect(() => {
 		navigation.setOptions({
@@ -23,23 +23,6 @@ const UserDetail = ({ route, navigation }) => {
 		});
 	}, [navigation]);
 
-	useEffect(() => {
-		getData();
-	}, [userId]);
-
-	const getData = async () => {
-		try {
-			const { data } = await axios(
-				`https://jsonplaceholder.typicode.com/users/${userId}`
-			);
-			setUser(data);
-		} catch (err) {
-			setError(err.message);
-		}
-
-		setLoading(false);
-	};
-
 	if (loading) {
 		return <Loading text="Loading User..." />;
 	}
@@ -50,7 +33,7 @@ const UserDetail = ({ route, navigation }) => {
 
 	return (
 		<View>
-			<Text style={styles.text}>{JSON.stringify(user, null, 2)}</Text>
+			<Text style={styles.text}>{JSON.stringify(data, null, 2)}</Text>
 		</View>
 	);
 };
