@@ -1,9 +1,9 @@
-import { View, Text, Button, FlatList } from "react-native";
 import React, { useEffect, useState } from "react";
-import Item from "./Item";
-import Loading from "../../components/Loading";
+import { View, FlatList } from "react-native";
 import axios from "axios";
+import Item from "./Item";
 import Error from "../../components/Error";
+import Loading from "../../components/Loading";
 
 const UsersScreen = () => {
 	const [users, setUsers] = useState([]);
@@ -11,11 +11,22 @@ const UsersScreen = () => {
 	const [error, setError] = useState(null);
 
 	useEffect(() => {
-		axios("https://jsonplaceholder.typicode.com/users")
-			.then((res) => setUsers(res.data))
-			.catch((err) => setError(err.message))
-			.finally(() => setLoading(false));
+		getData();
 	}, []);
+
+	const getData = async () => {
+		try {
+			const { data } = await axios(
+				"https://jsonplaceholder.typicode.com/users"
+			);
+
+			setUsers(data);
+		} catch (err) {
+			setError(err.message);
+		}
+
+		setLoading(false);
+	};
 
 	if (loading) {
 		return <Loading text="Loading..." />;
