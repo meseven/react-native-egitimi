@@ -18,7 +18,7 @@ function HomeScreen({ navigation }) {
 			<Text>Home Screen</Text>
 			<Button
 				title="Kullanıcılar"
-				onPress={() => navigation.navigate("Users")}
+				onPress={() => navigation.navigate("UsersTab")}
 			/>
 		</View>
 	);
