@@ -1,12 +1,30 @@
-import { View, Text, Button } from "react-native";
+import { View, Text, Button, FlatList } from "react-native";
 import React from "react";
+import Item from "./Item";
 
-const UsersScreen = ({ navigation }) => {
+const data = [
+	{
+		id: 1,
+		name: "Ahmet",
+	},
+	{
+		id: 2,
+		name: "Ayşe",
+	},
+	{
+		id: 3,
+		name: "Fatma",
+	},
+];
+
+const UsersScreen = () => {
 	return (
-		<View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-			<Text>UsersScreen</Text>
-			<Button title="Anasayfa" onPress={() => navigation.navigate("Home")} />
-			<Button title="Geri" onPress={() => navigation.goBack()} />
+		<View style={{ flex: 1 }}>
+			<FlatList
+				data={data}
+				keyExtractor={(item) => item.id}
+				renderItem={({ item }) => <Item item={item} />}
+			/>
 		</View>
 	);
 };
