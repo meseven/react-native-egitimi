@@ -1,16 +1,16 @@
-import { StyleSheet, View } from "react-native";
-import Title from "./src/components/Title";
-import User from "./src/components/User";
-import Users from "./src/components/Users";
+import React, { useState } from "react";
+import { StyleSheet, View, Button, Text, SafeAreaView } from "react-native";
+import Counter from "./src/components/Counter";
 
 const App = () => {
-	return (
-		<View style={styles.container}>
-			<Title text={"React Native"} color="green" number={1} isVisible={true} />
+	const [isVisible, setIsVisible] = useState(true);
 
-			{/* <User data={{ id: 1, name: "Mehmet" }} /> */}
-			{/* <Users data={["Ahmet", "Mehmet", "Ayşe", "Fatma"]} /> */}
-		</View>
+	return (
+		<SafeAreaView style={styles.container}>
+			{isVisible && <Counter />}
+
+			<Button title="Göster/Gizle" onPress={() => setIsVisible(!isVisible)} />
+		</SafeAreaView>
 	);
 };
 
