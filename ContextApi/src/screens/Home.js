@@ -1,9 +1,16 @@
 import { View, Text, Button, StyleSheet } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import Form from "../components/Form";
 import List from "../components/List";
+import { useUsers } from "../context/UsersContext";
 
 const Home = () => {
+	const { loadData } = useUsers();
+
+	useEffect(() => {
+		loadData();
+	}, []);
+
 	return (
 		<View style={styles.container}>
 			<Form />

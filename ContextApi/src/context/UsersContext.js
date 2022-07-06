@@ -1,14 +1,21 @@
 import { createContext, useContext, useState } from "react";
 import "react-native-get-random-values";
 import { v4 as uuidv4 } from "uuid";
+import axios from "axios";
 
 const UsersContext = createContext();
 
 export const UsersContextProvider = ({ children }) => {
-	const [users, setUsers] = useState([
-		{ id: 1, name: "Mehmet" },
-		{ id: 2, name: "Ahmet" },
-	]);
+	const [users, setUsers] = useState([]);
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState(null);
+
+	const loadData = () => {
+		axios("https://jsonplaceholder.typicode.com/users")
+			.then((res) => setUsers(res.data))
+			.catch((err) => setError(err.message))
+			.finally(() => setLoading(false));
+	};
 
 	const addUser = (data) => {
 		setUsers((prev) => [{ ...data, id: uuidv4() }, ...prev]);
@@ -23,8 +30,11 @@ export const UsersContextProvider = ({ children }) => {
 
 	const values = {
 		users,
+		loading,
+		error,
 		addUser,
 		removeUser,
+		loadData,
 	};
 
 	return (
