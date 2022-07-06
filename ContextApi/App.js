@@ -1,14 +1,11 @@
-import { LangContextProvider } from "./src/context/LangContext";
-import { ThemeContextProvider } from "./src/context/ThemeContext";
+import { UsersContextProvider } from "./src/context/UsersContext";
 import Router from "./src/Router";
 
 function App() {
 	return (
-		<LangContextProvider>
-			<ThemeContextProvider>
-				<Router />
-			</ThemeContextProvider>
-		</LangContextProvider>
+		<UsersContextProvider>
+			<Router />
+		</UsersContextProvider>
 	);
 }
 
