@@ -23,6 +23,7 @@ const Form = () => {
 				value={name}
 				onChangeText={(text) => setName(text)}
 				onEndEditing={handleSubmit}
+				placeholder="Enter username"
 			/>
 		</View>
 	);

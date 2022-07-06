@@ -14,10 +14,17 @@ export const UsersContextProvider = ({ children }) => {
 		setUsers((prev) => [{ ...data, id: uuidv4() }, ...prev]);
 	};
 
+	const removeUser = (id) => {
+		const cloned = [...users];
+		const index = cloned.findIndex((user) => user.id === id);
+		cloned.splice(index, 1);
+		setUsers(cloned);
+	};
+
 	const values = {
 		users,
-		setUsers,
 		addUser,
+		removeUser,
 	};
 
 	return (
