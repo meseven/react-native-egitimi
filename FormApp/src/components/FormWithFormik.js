@@ -4,19 +4,34 @@ import { useFormik } from "formik";
 import validationSchema from "./validations";
 
 const FormWithFormik = () => {
-	const { values, errors, touched, handleSubmit, handleChange, handleBlur } =
-		useFormik({
-			initialValues: {
-				username: "",
-				email: "",
-				password: "",
-				passwordConfirm: "",
-			},
-			onSubmit: (values) => {
-				console.log(values);
-			},
-			validationSchema,
-		});
+	const {
+		values,
+		errors,
+		touched,
+		isSubmitting,
+		handleSubmit,
+		handleChange,
+		handleBlur,
+	} = useFormik({
+		initialValues: {
+			username: "",
+			email: "",
+			password: "",
+			passwordConfirm: "",
+		},
+		onSubmit: async (values, bag) => {
+			await new Promise((r) => setTimeout(r, 1000));
+
+			if (values.email === "test@test.com") {
+				return bag.setFieldError("email", "Bu mail adresi zaten kullanılıyor.");
+			}
+
+			bag.resetForm();
+			console.log(values);
+			console.log(bag);
+		},
+		validationSchema,
+	});
 
 	return (
 		<View style={styles.container}>
@@ -27,6 +42,7 @@ const FormWithFormik = () => {
 					value={values.username}
 					onChangeText={handleChange("username")}
 					onBlur={handleBlur("username")}
+					editable={!isSubmitting}
 				/>
 				{errors.username && touched.username && (
 					<Text style={styles.error}>{errors.username}</Text>
@@ -42,6 +58,7 @@ const FormWithFormik = () => {
 					value={values.email}
 					onChangeText={handleChange("email")}
 					onBlur={handleBlur("email")}
+					editable={!isSubmitting}
 				/>
 				{errors.email && touched.email && (
 					<Text style={styles.error}>{errors.email}</Text>
@@ -56,6 +73,7 @@ const FormWithFormik = () => {
 					value={values.password}
 					onChangeText={handleChange("password")}
 					onBlur={handleBlur("password")}
+					editable={!isSubmitting}
 				/>
 				{errors.password && touched.password && (
 					<Text style={styles.error}>{errors.password}</Text>
@@ -70,6 +88,7 @@ const FormWithFormik = () => {
 					value={values.passwordConfirm}
 					onChangeText={handleChange("passwordConfirm")}
 					onBlur={handleBlur("passwordConfirm")}
+					editable={!isSubmitting}
 				/>
 				{errors.passwordConfirm && touched.passwordConfirm && (
 					<Text style={styles.error}>{errors.passwordConfirm}</Text>
@@ -77,7 +96,11 @@ const FormWithFormik = () => {
 			</View>
 
 			<View style={styles.item}>
-				<Button title="Register" onPress={handleSubmit} />
+				<Button
+					title="Register"
+					onPress={handleSubmit}
+					disabled={isSubmitting}
+				/>
 			</View>
 		</View>
 	);
