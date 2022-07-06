@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 const ThemeContext = createContext();
 
@@ -19,4 +19,12 @@ export const ThemeContextProvider = ({ children }) => {
 	);
 };
 
-export default ThemeContext;
+export const useTheme = () => {
+	const context = useContext(ThemeContext);
+
+	if (context === undefined) {
+		throw new Error("useTheme hook must be call inside ThemeContextProvider");
+	}
+
+	return context;
+};
