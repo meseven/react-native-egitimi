@@ -1,13 +1,17 @@
 import { StyleSheet, Text, View } from "react-native";
+import { NativeBaseProvider, Box } from "native-base";
+
 // import Form from "./src/components/Form";
 import FormWithFormik from "./src/components/FormWithFormik";
 
 export default function App() {
 	return (
-		<View style={styles.container}>
-			{/* <Form /> */}
-			<FormWithFormik />
-		</View>
+		<NativeBaseProvider>
+			<View style={styles.container}>
+				{/* <Form /> */}
+				<FormWithFormik />
+			</View>
+		</NativeBaseProvider>
 	);
 }
 
