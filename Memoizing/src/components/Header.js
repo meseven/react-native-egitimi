@@ -1,15 +1,18 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Button } from "react-native";
 import React from "react";
 
-const Header = ({ count }) => {
+const Header = ({ increment }) => {
 	console.log("Header component re-render");
 
-	const arr = new Array(count).fill().map(() => Math.floor(Math.random() * 10));
+	const arr = new Array(100000)
+		.fill()
+		.map(() => Math.floor(Math.random() * 10));
 
 	return (
 		<View style={styles.container}>
 			<Text>Header</Text>
-			<Text>{JSON.stringify(arr)}</Text>
+			<Text style={{ height: 100 }}>{JSON.stringify(arr)}</Text>
+			<Button onPress={() => increment(5)} title="Arttır" />
 		</View>
 	);
 };

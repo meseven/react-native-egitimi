@@ -1,5 +1,5 @@
 import { View, Text, Button, StyleSheet } from "react-native";
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useCallback } from "react";
 import Header from "./Header";
 import User from "./User";
 
@@ -16,12 +16,18 @@ const Counter = () => {
 
 	console.log("Counter component re-render");
 
+	const increment = useCallback((amount) => {
+		setCount((prev) => prev + amount);
+	}, []);
+
+	// const increment = (amount) => setCount(count + amount);
+
 	return (
 		<View style={styles.container}>
-			<Header />
+			<Header increment={increment} />
 
 			<Text style={styles.text}>{count}</Text>
-			<Button title="Arttır" onPress={() => setCount(count + 1)} />
+			<Button title="Arttır" onPress={() => increment(1)} />
 			<Button title="İsmi Değiştir" onPress={() => setName("Ahmet")} />
 
 			<User user={user} />
