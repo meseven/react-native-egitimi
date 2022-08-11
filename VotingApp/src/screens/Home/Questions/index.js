@@ -1,10 +1,11 @@
-import { useQuery } from "@apollo/client";
+import { useSubscription } from "@apollo/client";
 import React from "react";
 import { Text } from "react-native";
-import { GET_QUESTIONS_QUERY } from "./queries";
+import List from "./List";
+import { GET_QUESTIONS_SUBSCRIPTION } from "./queries";
 
 function Questions() {
-	const { loading, error, data } = useQuery(GET_QUESTIONS_QUERY);
+	const { loading, error, data } = useSubscription(GET_QUESTIONS_SUBSCRIPTION);
 
 	if (loading) {
 		return <Text>Loading...</Text>;
@@ -14,7 +15,9 @@ function Questions() {
 		return <Text>{JSON.stringify(error)}</Text>;
 	}
 
-	return <Text>{JSON.stringify(data)}</Text>;
+	console.log(data);
+
+	return <List data={data.questions} />;
 }
 
 export default Questions;
