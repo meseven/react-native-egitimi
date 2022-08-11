@@ -3,7 +3,6 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 // pages
 import Home from "./screens/Home";
-import AddButton from "./components/AddButton";
 
 const Stack = createNativeStackNavigator();
 
@@ -11,7 +10,11 @@ function Router() {
 	return (
 		<NavigationContainer>
 			<Stack.Navigator>
-				<Stack.Screen name="Home" component={Home} />
+				<Stack.Screen
+					name="Home"
+					component={Home}
+					options={{ title: "Questions" }}
+				/>
 			</Stack.Navigator>
 		</NavigationContainer>
 	);

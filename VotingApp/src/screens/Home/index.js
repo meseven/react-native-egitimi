@@ -25,7 +25,7 @@ const Home = ({ navigation }) => {
 				presentationStyle={"pageSheet"}
 				onRequestClose={() => setModalVisible(false)}
 			>
-				<AddNewModal />
+				<AddNewModal closeModal={() => setModalVisible(false)} />
 			</Modal>
 		</View>
 	);

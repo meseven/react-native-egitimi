@@ -5,7 +5,7 @@ import { useState } from "react";
 import { ADD_NEW_QUESTION_MUTATION } from "./queries";
 import { useMutation } from "@apollo/client";
 
-const AddNewModal = () => {
+const AddNewModal = ({ closeModal }) => {
 	const toast = useToast();
 	const [addNewQuestion, { loading, error }] = useMutation(
 		ADD_NEW_QUESTION_MUTATION
@@ -35,20 +35,20 @@ const AddNewModal = () => {
 			return;
 		}
 
-		const result = await addNewQuestion({
+		await addNewQuestion({
 			variables: {
 				title,
 				options: options_data,
 			},
 		});
 
+		closeModal();
+
 		toast.show({
 			title: "Question added!",
-			placement: "top",
+			placement: "bottom",
 			status: "success",
 		});
-
-		console.log("result", result);
 	};
 
 	return (
