@@ -15,8 +15,6 @@ function Questions() {
 		return <Text>{JSON.stringify(error)}</Text>;
 	}
 
-	console.log(data);
-
 	return <List data={data.questions} />;
 }
 
