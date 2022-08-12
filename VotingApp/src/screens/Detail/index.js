@@ -4,6 +4,7 @@ import { useQuery } from "@apollo/client";
 import { GET_QUESTION_DETAIL } from "./queries";
 import Loading from "../../components/AddButton/Loading";
 import { Box, Heading } from "native-base";
+import Form from "./Form";
 
 const Detail = ({ route }) => {
 	const { id } = route.params;
@@ -23,6 +24,7 @@ const Detail = ({ route }) => {
 	return (
 		<Box p="3">
 			<Heading>{text}</Heading>
+			<Form options={options} />
 		</Box>
 	);
 };

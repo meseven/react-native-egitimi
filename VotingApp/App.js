@@ -1,3 +1,4 @@
+import "./ignoreWarnings";
 import Router from "./src/Router";
 import { NativeBaseProvider } from "native-base";
 import { ApolloProvider } from "@apollo/client";
