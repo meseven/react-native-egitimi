@@ -1,6 +1,5 @@
-import { View, Text } from "react-native";
 import React from "react";
-import { Box, Heading } from "native-base";
+import { Box, Heading, Progress } from "native-base";
 
 const Item = ({ item, total }) => {
 	return (
@@ -11,6 +10,12 @@ const Item = ({ item, total }) => {
 				{" - "}
 				{item.answers_aggregate.aggregate.count} total
 			</Heading>
+
+			<Progress
+				size={"lg"}
+				value={item.answers_aggregate.aggregate.count}
+				max={total}
+			/>
 		</Box>
 	);
 };

@@ -2,7 +2,7 @@ import React from "react";
 import { useQuery } from "@apollo/client";
 import { GET_QUESTION_DETAIL } from "./queries";
 import Loading from "../../components/AddButton/Loading";
-import { Box, Heading } from "native-base";
+import { Box, Divider, Heading } from "native-base";
 import Form from "./Form";
 import { useState } from "react";
 import Results from "./Results";
@@ -26,6 +26,8 @@ const Detail = ({ route }) => {
 	return (
 		<Box p="3">
 			<Heading>{text}</Heading>
+			<Divider my={2} />
+
 			{!isVoted ? (
 				<Form options={options} setIsVoted={setIsVoted} />
 			) : (

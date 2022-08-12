@@ -1,9 +1,8 @@
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import React from "react";
 import { useSubscription } from "@apollo/client";
 import { RESULTS_SUBSCRIPTION } from "../queries";
 import Loading from "../../../components/AddButton/Loading";
-import { Heading } from "native-base";
 import Item from "./Item";
 
 const Results = ({ id }) => {
@@ -25,7 +24,6 @@ const Results = ({ id }) => {
 
 	return (
 		<View>
-			<Heading>Results</Heading>
 			{options.map((item) => (
 				<Item key={item.id} item={item} total={total} />
 			))}

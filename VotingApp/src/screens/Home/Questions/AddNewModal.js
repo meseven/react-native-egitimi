@@ -68,7 +68,7 @@ const AddNewModal = ({ closeModal }) => {
 				</Heading>
 				{options.map((item, i) => (
 					<Input
-						placeholder="Enter a new question..."
+						placeholder="Enter a new option..."
 						fontSize={18}
 						borderColor="#686565"
 						mb={1}
