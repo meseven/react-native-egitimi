@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { NEW_ANSWER_MUTATION } from "./queries";
 
-const Form = ({ options }) => {
+const Form = ({ options, setIsVoted }) => {
 	const [selected, setSelected] = useState("");
 
 	const [newAnswer, { loading }] = useMutation(NEW_ANSWER_MUTATION);
@@ -19,6 +19,8 @@ const Form = ({ options }) => {
 				option_id: selected,
 			},
 		});
+
+		setIsVoted(true);
 	};
 
 	return (

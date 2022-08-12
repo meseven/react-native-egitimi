@@ -20,3 +20,19 @@ export const NEW_ANSWER_MUTATION = gql`
 		}
 	}
 `;
+
+export const RESULTS_SUBSCRIPTION = gql`
+	subscription MySubscription($id: Int!) {
+		questions_by_pk(id: $id) {
+			options {
+				id
+				text
+				answers_aggregate {
+					aggregate {
+						count
+					}
+				}
+			}
+		}
+	}
+`;
