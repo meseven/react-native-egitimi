@@ -2,7 +2,7 @@ import { View } from "react-native";
 import React from "react";
 import { useSubscription } from "@apollo/client";
 import { RESULTS_SUBSCRIPTION } from "../queries";
-import Loading from "../../../components/AddButton/Loading";
+import Loading from "../../../components/Loading";
 import Item from "./Item";
 
 const Results = ({ id }) => {

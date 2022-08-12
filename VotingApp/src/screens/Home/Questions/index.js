@@ -1,7 +1,8 @@
 import { useSubscription } from "@apollo/client";
 import React from "react";
 import { Text } from "react-native";
-import Loading from "../../../components/AddButton/Loading";
+import EmptyList from "../../../components/EmptyList";
+import Loading from "../../../components/Loading";
 import List from "./List";
 import { GET_QUESTIONS_SUBSCRIPTION } from "./queries";
 
@@ -16,7 +17,15 @@ function Questions() {
 		return <Text>{JSON.stringify(error)}</Text>;
 	}
 
-	return <List data={data.questions} />;
+	return (
+		<>
+			{data.questions.length > 0 ? (
+				<List data={data.questions} />
+			) : (
+				<EmptyList message={"No surveys yet."} />
+			)}
+		</>
+	);
 }
 
 export default Questions;

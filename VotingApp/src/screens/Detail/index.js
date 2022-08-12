@@ -1,7 +1,7 @@
 import React from "react";
 import { useQuery } from "@apollo/client";
 import { GET_QUESTION_DETAIL } from "./queries";
-import Loading from "../../components/AddButton/Loading";
+import Loading from "../../components/Loading";
 import { Box, Divider, Heading } from "native-base";
 import Form from "./Form";
 import { useState } from "react";
